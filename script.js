@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       preloader.classList.add('fade-out');
     }
   };
-  setTimeout(hidePreloader, 2600);
+  setTimeout(hidePreloader, 2400);
 
   // ---- Mobile Drawer ----
   const hamburger = document.getElementById('hamburger');
@@ -24,22 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
   drawer?.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeDrawer));
 
   // ---- 3D CINEMATIC INTRO SCROLL & PARALLAX ENGINE ----
-  const introSection   = document.getElementById('home');
-  const headerContent  = document.getElementById('introHeaderContent');
-  const pancongObject  = document.getElementById('pancongObject');
+  const introSection     = document.getElementById('home');
+  const headerContent    = document.getElementById('introHeaderContent');
+  const pancongObject    = document.getElementById('pancongObject');
   const floatingToppings = document.querySelectorAll('.topping-item');
-  const swirlWrapper   = document.getElementById('introSwirlWrapper');
-  const swirlImg       = document.getElementById('swirlImg');
-  const revealContent  = document.getElementById('swirlRevealContent');
-  const scrollCue      = document.getElementById('introScrollCue');
-  const lightBeam      = document.querySelector('.intro-light-beam');
-  const navbar         = document.getElementById('navbar');
+  const swirlWrapper     = document.getElementById('introSwirlWrapper');
+  const swirlImg         = document.getElementById('swirlImg');
+  const revealContent    = document.getElementById('swirlRevealContent');
+  const scrollCue        = document.getElementById('introScrollCue');
+  const lightBeam        = document.querySelector('.intro-light-beam');
+  const navbar           = document.getElementById('navbar');
 
   let mouseX = 0, mouseY = 0;
   let targetMouseX = 0, targetMouseY = 0;
   let currentProgress = 0, targetProgress = 0;
 
-  // Mouse Parallax listener
+  // Lightweight passive mouse movement listener
   window.addEventListener('mousemove', (e) => {
     targetMouseX = (e.clientX / window.innerWidth) - 0.5;
     targetMouseY = (e.clientY / window.innerHeight) - 0.5;
@@ -53,117 +53,114 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // Scroll cue click to jump to reveal / menu
+  // Scroll cue click to jump smoothly to menu
   scrollCue?.addEventListener('click', () => {
-    if (introSection) {
-      const targetScroll = introSection.offsetTop + (introSection.offsetHeight * 0.7);
-      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    const menuSec = document.getElementById('menu');
+    if (menuSec) {
+      menuSec.scrollIntoView({ behavior: 'smooth' });
     }
   });
 
+  // Smoothstep utility for butter-smooth easing
+  function smoothstep(min, max, val) {
+    const x = Math.max(0, Math.min(1, (val - min) / (max - min)));
+    return x * x * (3 - 2 * x);
+  }
+
   // Animation Loop via requestAnimationFrame
   function renderIntroFrame() {
-    // Lerp smooth interpolation
-    mouseX += (targetMouseX - mouseX) * 0.08;
-    mouseY += (targetMouseY - mouseY) * 0.08;
-
     if (introSection) {
       const rect = introSection.getBoundingClientRect();
       const totalScrollable = introSection.offsetHeight - window.innerHeight;
+      
+      // Calculate target progress
       if (totalScrollable > 0) {
-        targetProgress = -rect.top / totalScrollable;
-        targetProgress = Math.max(0, Math.min(1, targetProgress));
-      }
-      currentProgress += (targetProgress - currentProgress) * 0.12;
-    }
-
-    const p = currentProgress;
-
-    // 1. Hero Header Text (Stage 1)
-    if (headerContent) {
-      const headerOp = Math.max(0, 1 - (p / 0.22));
-      const headerTranslateY = -p * 160;
-      const headerScale = 1 - (p * 0.15);
-      headerContent.style.opacity = headerOp.toFixed(3);
-      headerContent.style.transform = `translate3d(0, ${headerTranslateY.toFixed(1)}px, 0) scale(${headerScale.toFixed(3)})`;
-      headerContent.style.pointerEvents = p > 0.18 ? 'none' : 'auto';
-    }
-
-    // 2. 3D Floating Pancong Object Plunge Zoom (Stage 1 -> Stage 2)
-    if (pancongObject) {
-      let pancongScale, pancongOpacity;
-      if (p <= 0.65) {
-        pancongScale = 1 + Math.pow(p / 0.65, 2.2) * 5.5;
-        pancongOpacity = p < 0.38 ? 1 : Math.max(0, 1 - ((p - 0.38) / 0.22));
-      } else {
-        pancongScale = 6.5;
-        pancongOpacity = 0;
+        targetProgress = Math.max(0, Math.min(1, -rect.top / totalScrollable));
       }
 
-      const tiltX = -mouseY * 16 * (1 - Math.min(1, p * 1.5));
-      const tiltY = mouseX * 16 * (1 - Math.min(1, p * 1.5));
-      pancongObject.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(${pancongScale.toFixed(3)})`;
-      pancongObject.style.opacity = pancongOpacity.toFixed(3);
-    }
+      // Smooth lerp (friction interpolation)
+      currentProgress += (targetProgress - currentProgress) * 0.14;
+      mouseX += (targetMouseX - mouseX) * 0.08;
+      mouseY += (targetMouseY - mouseY) * 0.08;
 
-    // 3. Floating 3D Toppings Dispersion
-    if (floatingToppings && floatingToppings.length > 0) {
-      floatingToppings.forEach((item, index) => {
-        const depth = parseFloat(item.dataset.depth || '0.5');
-        const angle = (index / floatingToppings.length) * Math.PI * 2;
-        const spreadDist = Math.pow(p, 1.25) * 520 * depth;
-        const spreadX = Math.cos(angle) * spreadDist + (mouseX * depth * 70);
-        const spreadY = Math.sin(angle) * spreadDist + (mouseY * depth * 70);
-        const toppingOp = Math.max(0, 1 - (p / 0.42));
-        item.style.transform = `translate3d(${spreadX.toFixed(1)}px, ${spreadY.toFixed(1)}px, ${(depth * 80).toFixed(1)}px) scale(${(1 + p * 0.6).toFixed(2)}) rotate(${(spreadX * 0.4).toFixed(1)}deg)`;
-        item.style.opacity = toppingOp.toFixed(3);
-      });
-    }
+      const p = currentProgress;
 
-    // 4. Molten Swirl Vortex (Stage 3)
-    if (swirlWrapper && swirlImg) {
-      if (p < 0.26) {
-        swirlWrapper.style.opacity = '0';
-        swirlWrapper.classList.remove('active-interactive');
-      } else {
-        const swirlOp = Math.min(1, (p - 0.26) / 0.26);
-        swirlWrapper.style.opacity = swirlOp.toFixed(3);
-        const swirlScale = 0.68 + (p * 0.42);
-        const swirlRot = p * 140;
-        swirlImg.style.transform = `scale(${swirlScale.toFixed(3)}) rotate(${swirlRot.toFixed(1)}deg)`;
-        if (p >= 0.58) {
-          swirlWrapper.classList.add('active-interactive');
-        } else {
-          swirlWrapper.classList.remove('active-interactive');
+      // Only perform transforms when intro is in or near viewport
+      if (rect.bottom > -100 && rect.top < window.innerHeight + 100) {
+        
+        // 1. Header Text (fades out 0.0 -> 0.22)
+        if (headerContent) {
+          const headerAlpha = 1 - smoothstep(0.02, 0.22, p);
+          const headerY = -p * 150;
+          headerContent.style.opacity = headerAlpha.toFixed(3);
+          headerContent.style.transform = `translate3d(0, ${headerY.toFixed(1)}px, 0)`;
+          headerContent.style.pointerEvents = headerAlpha < 0.1 ? 'none' : 'auto';
+        }
+
+        // 2. Pancong Zoom Plunge (scale 1.0 -> 5.5, fades out 0.32 -> 0.56)
+        if (pancongObject) {
+          const zoomProgress = smoothstep(0.05, 0.60, p);
+          const pancongScale = 1 + zoomProgress * 4.5;
+          const pancongAlpha = 1 - smoothstep(0.32, 0.56, p);
+
+          const tiltX = -mouseY * 14 * (1 - Math.min(1, p * 1.5));
+          const tiltY = mouseX * 14 * (1 - Math.min(1, p * 1.5));
+          pancongObject.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(${pancongScale.toFixed(3)})`;
+          pancongObject.style.opacity = pancongAlpha.toFixed(3);
+        }
+
+        // 3. Floating 3D Toppings & Coffee Beans Dispersion
+        if (floatingToppings.length > 0) {
+          const spreadFactor = smoothstep(0.05, 0.45, p);
+          floatingToppings.forEach((item) => {
+            const depth = parseFloat(item.dataset.depth || '0.5');
+            const dir = parseFloat(item.dataset.direction || '1');
+            const spreadDist = spreadFactor * 450 * depth;
+            const spreadX = (dir * spreadDist) + (mouseX * depth * 60);
+            const spreadY = (mouseY * depth * 60);
+            const toppingAlpha = 1 - smoothstep(0.1, 0.38, p);
+            item.style.transform = `translate3d(${spreadX.toFixed(1)}px, ${spreadY.toFixed(1)}px, 0) scale(${(1 + spreadFactor * 0.4).toFixed(2)})`;
+            item.style.opacity = toppingAlpha.toFixed(3);
+          });
+        }
+
+        // 4. Molten Swirl Vortex (fades in 0.26 -> 0.52)
+        if (swirlWrapper && swirlImg) {
+          const swirlAlpha = smoothstep(0.26, 0.52, p);
+          swirlWrapper.style.opacity = swirlAlpha.toFixed(3);
+          
+          const swirlScale = 0.70 + (p * 0.38);
+          const swirlRot = p * 130;
+          swirlImg.style.transform = `scale(${swirlScale.toFixed(3)}) rotate(${swirlRot.toFixed(1)}deg)`;
+          
+          if (p >= 0.55) {
+            swirlWrapper.classList.add('active-interactive');
+          } else {
+            swirlWrapper.classList.remove('active-interactive');
+          }
+        }
+
+        // 5. Reveal Content Headline & Buttons (fades in 0.50 -> 0.75)
+        if (revealContent) {
+          const revAlpha = smoothstep(0.50, 0.75, p);
+          revealContent.style.opacity = revAlpha.toFixed(3);
+          const transY = (1 - revAlpha) * 30;
+          const scaleRev = 0.94 + (revAlpha * 0.06);
+          revealContent.style.transform = `translate3d(0, ${transY.toFixed(1)}px, 0) scale(${scaleRev.toFixed(3)})`;
+          revealContent.style.pointerEvents = revAlpha > 0.5 ? 'auto' : 'none';
+        }
+
+        // 6. Scroll Indicator Cue Fade
+        if (scrollCue) {
+          const cueAlpha = 1 - smoothstep(0.0, 0.12, p);
+          scrollCue.style.opacity = cueAlpha.toFixed(3);
+        }
+
+        // 7. Light Beam Subtle Parallax
+        if (lightBeam) {
+          lightBeam.style.transform = `rotate(${(-15 + mouseX * 5).toFixed(1)}deg) translate3d(${(mouseX * 20).toFixed(1)}px, ${(mouseY * 20).toFixed(1)}px, 0)`;
         }
       }
-    }
-
-    // 5. Reveal Headline Content (Stage 4)
-    if (revealContent) {
-      if (p < 0.56) {
-        revealContent.style.opacity = '0';
-        revealContent.style.transform = 'translate3d(0, 35px, 0) scale(0.92)';
-        revealContent.style.pointerEvents = 'none';
-      } else {
-        const revProgress = Math.min(1, (p - 0.56) / 0.25);
-        revealContent.style.opacity = revProgress.toFixed(3);
-        const transY = (1 - revProgress) * 35;
-        const scaleRev = 0.92 + (revProgress * 0.08);
-        revealContent.style.transform = `translate3d(0, ${transY.toFixed(1)}px, 0) scale(${scaleRev.toFixed(3)})`;
-        revealContent.style.pointerEvents = revProgress > 0.5 ? 'auto' : 'none';
-      }
-    }
-
-    // 6. Scroll Indicator Cue Fade
-    if (scrollCue) {
-      const cueOp = Math.max(0, 1 - (p / 0.12));
-      scrollCue.style.opacity = cueOp.toFixed(3);
-    }
-
-    // 7. Light Beam subtle drift
-    if (lightBeam) {
-      lightBeam.style.transform = `rotate(${(-15 + mouseX * 6).toFixed(1)}deg) translate3d(${(mouseX * 25).toFixed(1)}px, ${(mouseY * 25).toFixed(1)}px, 0)`;
     }
 
     requestAnimationFrame(renderIntroFrame);
@@ -171,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   requestAnimationFrame(renderIntroFrame);
 
-  // ---- Mobile Drawer & Navigation ----
+  // ---- Tabs ----
   const tabs   = document.querySelectorAll('.tab');
   const panels = document.querySelectorAll('.tab-panel');
 
@@ -242,10 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navbar) {
       if (window.scrollY > 40) {
         navbar.classList.add('scrolled');
-        navbar.style.boxShadow = '0 4px 28px rgba(0,0,0,0.85)';
       } else {
         navbar.classList.remove('scrolled');
-        navbar.style.boxShadow = '';
       }
     }
   }, { passive: true });
