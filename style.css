@@ -2063,6 +2063,8 @@ button {
   }
 }
 
+
+
 /* ======= PROMO STRIP ======= */
 .promo-strip {
   background: linear-gradient(90deg, #1a0e07 0%, #2a1709 50%, #1a0e07 100%);
@@ -2253,94 +2255,6 @@ button {
   border-radius: var(--radius-md);
 }
 .menu-cta-note { font-size: 0.92rem; color: var(--text-muted); }
-
-/* ======= STAGE 2: TERRA GOLDEN WARM REVEAL ======= */
-
-/* Override swirl background to warm golden amber */
-.intro-swirl-wrapper {
-  background: radial-gradient(ellipse 110% 100% at 50% 60%,
-    #d49540 0%, #b0701e 35%, #7a4010 65%, #3a1a06 100%) !important;
-}
-
-/* Remove mix-blend-mode – use normal object-fit contain */
-.swirl-img {
-  object-fit: contain !important;
-  border-radius: 0 !important;
-}
-
-/* Reveal text: dark on golden BG (Terra style) */
-.reveal-pill-terra { color: rgba(40, 20, 5, 0.6) !important; letter-spacing: 0.22em; font-size: 0.7rem; }
-.reveal-h2-terra {
-  font-size: clamp(2.8rem, 6vw, 5.2rem) !important;
-  color: #1c0e04 !important;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.12) !important;
-  line-height: 1.1 !important;
-  letter-spacing: -0.02em !important;
-}
-.reveal-desc-terra { color: rgba(30, 15, 3, 0.7) !important; }
-.btn-reveal-dark {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.85rem 2rem;
-  background: #1c0e04;
-  color: #f7c88b;
-  border: none;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.35);
-}
-.btn-reveal-dark:hover {
-  background: #2e1808;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
-}
-.btn-reveal-outline-dark {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.85rem 2rem;
-  background: transparent;
-  color: #1c0e04;
-  border: 2px solid rgba(28,14,4,0.35);
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-.btn-reveal-outline-dark:hover {
-  border-color: #1c0e04;
-  background: rgba(28,14,4,0.08);
-}
-/* override existing reveal colors for stage 2 warm mode */
-.swirl-reveal-content .reveal-pill { color: rgba(40,20,5,0.6) !important; }
-.swirl-reveal-content .reveal-h2 {
-  color: #1c0e04 !important;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.12) !important;
-}
-.swirl-reveal-content .reveal-desc { color: rgba(30,15,3,0.7) !important; }
-.swirl-reveal-content .btn-reveal-gold {
-  background: #1c0e04 !important;
-  color: #f7c88b !important;
-  border-color: #1c0e04 !important;
-}
-.swirl-reveal-content .btn-reveal-outline {
-  color: #1c0e04 !important;
-  border-color: rgba(28,14,4,0.35) !important;
-}
-.swirl-reveal-content .btn-reveal-outline:hover {
-  background: rgba(28,14,4,0.1) !important;
-  border-color: #1c0e04 !important;
-}
-
-/* Override vignette for warm stage */
-.intro-swirl-wrapper .swirl-vignette {
-  background: radial-gradient(ellipse 82% 80% at 50% 50%, transparent 38%, rgba(50,20,5,0.55) 100%) !important;
-}
 
 /* ======= FINAL CTA ENHANCEMENTS ======= */
 .final-cta-badge {
