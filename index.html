@@ -2,516 +2,729 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Pancong Donto – Hangat, Gurih, Nikmati</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pancong Donto – Pancong Hangat, Ritme Senja yang Tenang</title>
+  <meta name="description" content="Pancong Donto menyajikan aneka pancong lumer hangat dan racikan kopi istimewa Sevenov Signature Blend Robusta & Arabica Gayo di Cianjur."/>
+  
+  <!-- Google Fonts: Playfair Display (Serif), Plus Jakarta Sans (Sans), Caveat (Handwritten Script) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- ======= PRELOADER / SPLASH ANIMATION ======= -->
-<div id="preloader" class="preloader">
-  <div class="preloader-content">
-    <img src="img/logo.png" alt="Pancong Donto Logo" class="preloader-logo"/>
-    <div class="preloader-sub">PANCONG DONTO</div>
-    <div class="preloader-bar"><div class="preloader-progress"></div></div>
+  <!-- ======= TOP ANNOUNCEMENT / PROMO BAR ======= -->
+  <div class="top-promo-bar">
+    <div class="container top-promo-inner">
+      <span class="promo-dot"></span>
+      <p class="promo-text">
+        <strong>Promo Senja:</strong> Paket Pancong Lumer + Kopi mulai Rp 35K &bull; Buka Setiap Hari 07.00 – 23.00 WIB
+      </p>
+    </div>
   </div>
-</div>
 
-<!-- ======= NAVBAR ======= -->
-<header class="navbar" id="navbar">
-  <a href="#home" class="nav-logo">
-    <img src="img/logo.png" alt="Pancong Donto" class="logo-img"/>
+  <!-- ======= NAVBAR ======= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="nav-logo">
+        <img src="img/logo.png" alt="Pancong Donto Logo" class="logo-img"/>
+        <div class="logo-text">
+          <span class="logo-title">Pancong Donto</span>
+          <span class="logo-sub">KEDAI KOPI &amp; PANCONG</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#harga">Harga</a>
+        <a href="#paket">Paket</a>
+        <a href="#lokasi">Lokasi</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan%20menu" target="_blank" rel="noopener" class="btn-nav-wa">
+          <span class="wa-icon">&#128241;</span> Pesan via WA
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Buka Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <div class="drawer-logo">
+        <img src="img/logo.png" alt="Pancong Donto" class="drawer-logo-img"/>
+        <span>Pancong Donto</span>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Tutup Menu">&#10005;</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#home"    class="drawer-link" data-close>Home</a>
+      <a href="#menu"    class="drawer-link" data-close>Menu Pilihan</a>
+      <a href="#tentang" class="drawer-link" data-close>Cerita Kami</a>
+      <a href="#harga"   class="drawer-link" data-close>Daftar Harga</a>
+      <a href="#paket"   class="drawer-link" data-close>Paket Hemat</a>
+      <a href="#lokasi"  class="drawer-link" data-close>Lokasi Kedai</a>
+    </div>
+    <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="btn-gold full drawer-btn" data-close>
+      Pesan via WhatsApp ➔
+    </a>
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- ======= HERO SECTION ======= -->
+  <section class="hero-section" id="home">
+    <div class="container hero-grid">
+      
+      <!-- Left Column: Hero Text -->
+      <div class="hero-left">
+        <div class="hero-tag-pill">
+          <span class="tag-star">&#9733;</span> KEDAI PANCONG &amp; KOPI NUSANTARA
+        </div>
+        
+        <h1 class="hero-title">
+          Pancong hangat,<br>
+          <span class="hero-title-accent">ritme senja</span> yang<br>
+          tenang.
+        </h1>
+
+        <p class="hero-desc">
+          Racikan khas Pancong Donto &mdash; Pancong lumer aneka topping hangat dipadukan dengan racikan kopi istimewa <strong>Sevenov Signature Blend (Robusta &amp; Arabica Gayo)</strong>. Camilan hangat dan tegukan kopi dibuat untuk menemani momen santaimu.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="btn-hero-primary">
+            Pesan via WhatsApp &#8594;
+          </a>
+          <a href="#harga" class="btn-hero-ghost">
+            Lihat Menu Lengkap
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat-item">
+            <div class="stat-top">
+              <span class="stat-num">4.9</span>
+              <span class="stat-icon-gold">&#9733;</span>
+            </div>
+            <span class="stat-label">1.200+ ulasan pelanggan</span>
+          </div>
+          <div class="hero-stat-sep"></div>
+          <div class="hero-stat-item">
+            <span class="stat-num">17+</span>
+            <span class="stat-label">Varian Pancong Lumer</span>
+          </div>
+          <div class="hero-stat-sep"></div>
+          <div class="hero-stat-item">
+            <span class="stat-num">07.00 – 23.00</span>
+            <span class="stat-label">Buka setiap hari</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Layered Polaroid Photo Collage -->
+      <div class="hero-right">
+        <div class="polaroid-collage">
+          
+          <!-- Primary Polaroid: Suasana Kedai -->
+          <div class="polaroid-card card-main">
+            <div class="polaroid-img-wrap">
+              <img src="img/kedai_suasana.jpg" alt="Suasana Sore di Kedai Pancong Donto"/>
+            </div>
+            <p class="polaroid-caption">suasana sore di kedai &#10024;</p>
+          </div>
+
+          <!-- Secondary Polaroid: Pancong Lumer Spesial -->
+          <div class="polaroid-card card-sub">
+            <div class="polaroid-img-wrap">
+              <img src="img/hero_pancong_stage1.jpg" alt="Pancong Lumer Choco Cheese"/>
+            </div>
+            <p class="polaroid-caption">pancong lumer spesial &#127847;</p>
+          </div>
+
+          <!-- Floating Badge Accent -->
+          <div class="hero-floating-badge">
+            <span class="hfb-icon">&#9749;</span>
+            <div>
+              <strong>Start from 5K</strong>
+              <small>Murah &amp; Gurih</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= FAVORIT PELANGGAN (BEST SELLER MINGGU INI) ======= -->
+  <section class="section-dark" id="menu">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="sec-subtitle">&#128293; FAVORIT PELANGGAN</span>
+        <h2 class="sec-title">Menu best seller minggu ini</h2>
+        <p class="sec-desc">Empat sajian yang paling sering dipesan ulang oleh pelanggan setia Pancong Donto.</p>
+      </div>
+
+      <div class="bestseller-grid">
+        
+        <!-- Card 1: Pancong Mix Topping -->
+        <div class="bcard">
+          <div class="bcard-badge badge-terlaris">TERLARIS</div>
+          <div class="bcard-img-wrap">
+            <img src="img/hero_pancong_stage1.jpg" alt="Pancong Mix Toping"/>
+          </div>
+          <div class="bcard-body">
+            <h3 class="bcard-title">Pancong Mix Topping</h3>
+            <p class="bcard-desc">Pancong hangat lumer setengah matang dengan perpaduan saus cokelat lumer dan keju parut gurih melimpah.</p>
+            <div class="bcard-foot">
+              <span class="bcard-price">Rp 6K &ndash; 7K</span>
+              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Pancong%20Mix%20Topping" target="_blank" rel="noopener" class="bcard-btn" aria-label="Pesan Pancong Mix">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Es Kopi Signature Gayo -->
+        <div class="bcard">
+          <div class="bcard-badge badge-signature">SIGNATURE</div>
+          <div class="bcard-img-wrap">
+            <img src="img/coffee_beans_gayo.jpg" alt="Es Kopi Signature Blend"/>
+          </div>
+          <div class="bcard-body">
+            <h3 class="bcard-title">Es Kopi Signature Donto</h3>
+            <p class="bcard-desc">Racikan istimewa Sevenov Signature Blend (Robusta &amp; Arabica Gayo) dipadu susu segar dan gula aren murni.</p>
+            <div class="bcard-foot">
+              <span class="bcard-price">Rp 24rb</span>
+              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Es%20Kopi%20Signature%20Donto" target="_blank" rel="noopener" class="bcard-btn" aria-label="Pesan Es Kopi Signature">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Butterscotch Coffee Latte -->
+        <div class="bcard">
+          <div class="bcard-badge badge-klasik">KLASIK</div>
+          <div class="bcard-img-wrap">
+            <img src="img/menu_iced_coffee.jpg" alt="Butterscotch Coffee"/>
+          </div>
+          <div class="bcard-body">
+            <h3 class="bcard-title">Butterscotch Coffee</h3>
+            <p class="bcard-desc">Espresso aromatic dengan foam susu lembut, sentuhan butterscotch karamel legit yang creamy dan menyegarkan.</p>
+            <div class="bcard-foot">
+              <span class="bcard-price">Rp 26rb</span>
+              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Butterscotch%20Coffee" target="_blank" rel="noopener" class="bcard-btn" aria-label="Pesan Butterscotch Coffee">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Pisang Goreng Crispy -->
+        <div class="bcard">
+          <div class="bcard-badge badge-ringan">RINGAN</div>
+          <div class="bcard-img-wrap">
+            <img src="img/menu_pisang_goreng.jpg" alt="Pisang Goreng Crispy"/>
+          </div>
+          <div class="bcard-body">
+            <h3 class="bcard-title">Pisang Goreng Crispy</h3>
+            <p class="bcard-desc">Pisang manis pilihan digoreng renyah keemasan, disajikan hangat dengan taburan keju atau lelehan cokelat.</p>
+            <div class="bcard-foot">
+              <span class="bcard-price">Rp 15rb</span>
+              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Pisang%20Goreng%20Crispy" target="_blank" rel="noopener" class="bcard-btn" aria-label="Pesan Pisang Goreng">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= CERITA KAMI (ABOUT & STORY) ======= -->
+  <section class="section-warm" id="tentang">
+    <div class="container story-grid">
+      
+      <!-- Story Left: Polaroid & Real Barista Photo -->
+      <div class="story-left">
+        <div class="story-polaroid-stack">
+          <div class="story-card card-barista">
+            <div class="story-img-wrap">
+              <img src="img/barista_brewing.jpg" alt="Barista Pancong Donto Seduh Kopi"/>
+            </div>
+            <p class="polaroid-caption">diseduh &amp; dipanggang tiap hari &#9749;</p>
+          </div>
+          <div class="story-card card-beans">
+            <div class="story-img-wrap">
+              <img src="img/coffee_beans_gayo.jpg" alt="Sevenov Signature Blend Beans"/>
+            </div>
+            <p class="polaroid-caption">biji pilihan nusantara &#127793;</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Right: Text, Bean Origins & Stats -->
+      <div class="story-right">
+        <span class="sec-subtitle">&#128220; CERITA KAMI</span>
+        <h2 class="sec-title">Dari kehangatan dapur tradisional, ke cangkir &amp; mejamu.</h2>
+        
+        <p class="story-p">
+          Pancong Donto berdiri dari kebiasaan sederhana: <em>ngobrol santai sore hari menunggu camilan pancong hangat yang baru diangkat dari cetakan arang</em>. Sejak awal, kami berkomitmen menyajikan pancong dengan tekstur lumer sempurna di dalam dan garing di luar.
+        </p>
+        <p class="story-p">
+          Tak hanya camilan, kami meracik kopi dengan biji pilihan <strong>Sevenov Signature Blend</strong> — memadukan karakter mantap <strong>Robusta</strong> dan aroma floral khas <strong>Arabica Aceh Gayo</strong> agar setiap tegukan memberikan ketenangan dan semangat baru.
+        </p>
+
+        <!-- Bean Badges -->
+        <div class="bean-badges-wrap">
+          <span class="bean-badge">&#127793; Gayo, Aceh</span>
+          <span class="bean-badge">&#127793; Toraja, Sulawesi</span>
+          <span class="bean-badge">&#127793; Robusta Pilihan</span>
+        </div>
+
+        <!-- 4 Stats Boxes -->
+        <div class="story-stats-grid">
+          <div class="sstat-box">
+            <strong>6th+</strong>
+            <span>Tahun Berdiri</span>
+          </div>
+          <div class="sstat-box">
+            <strong>17+</strong>
+            <span>Varian Pancong</span>
+          </div>
+          <div class="sstat-box">
+            <strong>18+</strong>
+            <span>Varian Minuman</span>
+          </div>
+          <div class="sstat-box">
+            <strong>100%</strong>
+            <span>Bahan Segar &amp; Asli</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= DAFTAR HARGA / MENU LENGKAP ======= -->
+  <section class="section-dark" id="harga">
+    <div class="container">
+      
+      <div class="section-header center">
+        <span class="sec-subtitle">&#128203; DAFTAR HARGA</span>
+        <h2 class="sec-title">Menu lengkap Pancong Donto</h2>
+        <p class="sec-desc">Semua harga sudah termasuk pajak. Tersedia opsi matang &amp; setengah matang (*lumer*) sesuai seleramu.</p>
+      </div>
+
+      <div class="menu-tables-grid">
+        
+        <!-- Category 1: Pancong Lumer -->
+        <div class="menu-cat-card">
+          <div class="menu-cat-header">
+            <span class="cat-icon">&#127847;</span>
+            <h3>Pancong Lumer</h3>
+          </div>
+          <div class="menu-cat-list">
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Original</strong><small>Gurih manis kelapa klasik</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">6rb</span>
+            </div>
+            <div class="menu-row highlight">
+              <div class="mitem-info"><strong>Choco Crunchy</strong><small>Lelehan cokelat krispi</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">6rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Cheese</strong><small>Keju cheddar parut melimpah</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">7rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Mozzarella</strong><small>Keju molor gurih melted</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">7rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Peanutbutter</strong><small>Selai kacang gurih creamy</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">6rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Tiramisu</strong><small>Aroma kopi &amp; cream manis</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">6rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Greentea Matcha</strong><small>Matcha jepang aromatik</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">6rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Durian</strong><small>Selai durian legit harum</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">6rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Caramel / Biscoff</strong><small>Topping karamel lotus renyah</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">6rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Vanilla Almond</strong><small>Vanilla lembut + irisan almond</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">7rb</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2: Kopi Hitam & Espresso -->
+        <div class="menu-cat-card">
+          <div class="menu-cat-header">
+            <span class="cat-icon">&#9749;</span>
+            <h3>Kopi Hitam &amp; Espresso</h3>
+          </div>
+          <div class="menu-cat-list">
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Espresso Single</strong><small>Ekstraksi murni biji Gayo</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">14rb</span>
+            </div>
+            <div class="menu-row highlight">
+              <div class="mitem-info"><strong>Americano / Long Black</strong><small>Espresso bold segar (Hot/Ice)</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">18rb</span>
+            </div>
+            <div class="menu-row highlight">
+              <div class="mitem-info"><strong>Es Kopi Signature Donto</strong><small>Signature blend + aren murni</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">24rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>V60 Single Origin</strong><small>Gayo / Toraja / Mandailing</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">28rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Butterscotch Coffee</strong><small>Creamy butterscotch aroma</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">26rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Vanilla Latte</strong><small>Susu lembut &amp; vanilla alami</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">26rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Kopi Tubruk Tradisional</strong><small>Kopi hitam tubruk mantap</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">16rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Black Donto</strong><small>Kopi hitam racikan spesial kedai</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">26rb</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3: Non-Kopi -->
+        <div class="menu-cat-card">
+          <div class="menu-cat-header">
+            <span class="cat-icon">&#129380;</span>
+            <h3>Non-Kopi &amp; Segar</h3>
+          </div>
+          <div class="menu-cat-list">
+            <div class="menu-row highlight">
+              <div class="mitem-info"><strong>Choco Blast</strong><small>Cokelat pekat dark chocolate</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">18rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Green Tea Latte</strong><small>Matcha segar susu gurih</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">13rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Lemon Tea Segar</strong><small>Teh sari lemon asli dingin</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">15rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Lychee Tea</strong><small>Teh leci wangi dengan buah</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">18rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Sweet Heart Berry</strong><small>Perpaduan berry manis segar</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">24rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Sweet Tea Melati</strong><small>Es teh manis aroma melati</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">9rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Biscoff Milk Shake</strong><small>Susu segar lotus biskuit shake</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">28rb</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4: Camilan & Makanan -->
+        <div class="menu-cat-card">
+          <div class="menu-cat-header">
+            <span class="cat-icon">&#127857;</span>
+            <h3>Camilan &amp; Makanan</h3>
+          </div>
+          <div class="menu-cat-list">
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Pisang Goreng Crispy</strong><small>Pisang renyah tabur gula/keju</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">15rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Pisang Bakar Cokelat Keju</strong><small>Pisang panggang saus cokelat</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">18rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Roti Bakar Cokelat Keju</strong><small>Roti panggang mentega lumer</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">18rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>French Fries Gurih</strong><small>Kentang goreng bumbu renyah</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">15rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Dimsum Goreng / Kukus</strong><small>Dimsum isi daging lezat</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">22rb</span>
+            </div>
+            <div class="menu-row highlight">
+              <div class="mitem-info"><strong>Spicy Indomie Goreng/Kuah</strong><small>Indomie pedas + sayur + telur</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">19rb</span>
+            </div>
+            <div class="menu-row">
+              <div class="mitem-info"><strong>Mix Platter Sharing</strong><small>Platter kentang, cireng, sosis</small></div>
+              <span class="mitem-dots"></span>
+              <span class="mitem-price">31rb</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= PAKET SPESIAL HEMAT ======= -->
+  <section class="section-warm" id="paket">
+    <div class="container">
+      
+      <div class="section-header center">
+        <span class="sec-subtitle">&#11088; PAKET HEMAT</span>
+        <h2 class="sec-title">Pilihan Paket Hemat Pancong Lumer</h2>
+        <p class="sec-desc">Kombinasi pancong lumer dan minuman favorit dengan harga lebih hemat.</p>
+      </div>
+
+      <div class="paket-grid">
+        
+        <!-- Paket 1 -->
+        <div class="paket-card">
+          <div class="paket-img-wrap">
+            <img src="img/paket1.jpg" alt="Paket 1 Pancong & Americano" class="paket-img"/>
+            <div class="paket-price-tag">ALL IN<br><strong>45K</strong></div>
+          </div>
+          <div class="paket-body">
+            <p class="paket-label">PAKET 1</p>
+            <h3>Pancong &amp; Americano</h3>
+            <p class="paket-desc">1 Porsi Pancong Lumer (Isi 5, Mix Topping) + 1 Iced Americano Segar</p>
+            <div class="paket-includes">
+              <span>&#10003; Pancong Lumer Mix (Isi 5)</span>
+              <span>&#10003; Iced Americano</span>
+            </div>
+            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%201%20Pancong%20dan%20Americano" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket 1</a>
+          </div>
+        </div>
+
+        <!-- Paket 2 (Featured) -->
+        <div class="paket-card featured">
+          <div class="featured-ribbon">TERPOPULER</div>
+          <div class="paket-img-wrap">
+            <img src="img/paket2.jpg" alt="Paket 2 Pancong & Lemon Tea" class="paket-img"/>
+            <div class="paket-price-tag gold">HANYA<br><strong>45K</strong></div>
+          </div>
+          <div class="paket-body">
+            <p class="paket-label gold">PAKET 2</p>
+            <h3>Pancong &amp; Lemon Tea</h3>
+            <p class="paket-desc">1 Porsi Pancong Lumer (Isi 5) + 1 Iced Lemon Tea dingin penyegar dahaga</p>
+            <div class="paket-includes">
+              <span>&#10003; Pancong Lumer Mix (Isi 5)</span>
+              <span>&#10003; Iced Lemon Tea</span>
+            </div>
+            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%202%20Pancong%20dan%20Lemon%20Tea" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket 2</a>
+          </div>
+        </div>
+
+        <!-- Paket 3 -->
+        <div class="paket-card">
+          <div class="paket-img-wrap">
+            <img src="img/paket3.jpg" alt="Paket 3 Pancong & Butterscotch" class="paket-img"/>
+            <div class="paket-price-tag">CUMA<br><strong>35K</strong></div>
+          </div>
+          <div class="paket-body">
+            <p class="paket-label">PAKET 3</p>
+            <h3>3 Pancong &amp; Butterscotch</h3>
+            <p class="paket-desc">3 Buah Pancong Lumer Topping Pilihan + 1 Iced Butterscotch Coffee legit</p>
+            <div class="paket-includes">
+              <span>&#10003; 3 Pancong Lumer Mix</span>
+              <span>&#10003; Iced Butterscotch Coffee</span>
+            </div>
+            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%203%20Pancong%20dan%20Butterscotch" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket 3</a>
+          </div>
+        </div>
+
+        <!-- Paket 4 -->
+        <div class="paket-card">
+          <div class="paket-img-wrap">
+            <img src="img/paket4.jpg" alt="Paket 4 Mie Spicy & Dimsum" class="paket-img"/>
+            <div class="paket-price-tag">ALL IN<br><strong>50K</strong></div>
+          </div>
+          <div class="paket-body">
+            <p class="paket-label">PAKET 4</p>
+            <h3>Mie Spicy &amp; Dimsum</h3>
+            <p class="paket-desc">1 Porsi Mie Spicy Komplit + 1 Porsi Dimsum Goreng + 1 Lychee Tea Segar</p>
+            <div class="paket-includes">
+              <span>&#10003; Mie Spicy (Bok Choy, Telur)</span>
+              <span>&#10003; Dimsum Goreng</span>
+              <span>&#10003; Lychee Tea</span>
+            </div>
+            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%204%20Mie%20Spicy%20dan%20Dimsum" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket 4</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= TEMUKAN KAMI (LOCATION & VISIT) ======= -->
+  <section class="section-dark" id="lokasi">
+    <div class="container">
+      
+      <div class="location-box-grid">
+        
+        <!-- Left Column: Info & Details -->
+        <div class="loc-info-card">
+          <span class="sec-subtitle">&#128205; TEMUKAN KAMI</span>
+          <h2 class="sec-title">Mampir ke Pancong Donto</h2>
+          <p class="loc-intro">
+            Buka tiap hari, paling ramai justru pas senja &mdash; jadi datang lebih awal kalau mau tempat duduk favoritmu.
+          </p>
+
+          <div class="loc-details-list">
+            <div class="ldetail-item">
+              <span class="ldetail-icon">&#128205;</span>
+              <div>
+                <strong>Alamat</strong>
+                <p>Jl. Siti Jenab No. 67, Pamoyanan, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat</p>
+              </div>
+            </div>
+
+            <div class="ldetail-item">
+              <span class="ldetail-icon">&#9200;</span>
+              <div>
+                <strong>Jam Buka</strong>
+                <p>Setiap hari, 07.00 &ndash; 23.00 WIB</p>
+              </div>
+            </div>
+
+            <div class="ldetail-item">
+              <span class="ldetail-icon">&#128241;</span>
+              <div>
+                <strong>Telepon / WhatsApp</strong>
+                <a href="https://wa.me/6285782203468" target="_blank" rel="noopener" class="loc-link">0857-8220-3468</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="loc-actions">
+            <a href="https://share.google/hVPR2yXPPjXpFyWBk" target="_blank" rel="noopener" class="btn-maps">
+              <span>&#128506;</span> Buka di Google Maps &#8594;
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Storefront Image with Pin Badge -->
+        <div class="loc-visual-card">
+          <div class="loc-img-wrapper">
+            <img src="img/kedai_storefront.jpg" alt="Storefront Kedai Pancong Donto Malam Hari"/>
+            <div class="loc-pin-badge">
+              <span class="lpin-dot">&#128205;</span>
+              <div>
+                <strong>Pancong Donto &mdash; Cianjur</strong>
+                <small>Jl. Siti Jenab No. 67</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= FINAL CTA BANNER ======= -->
+  <section class="final-cta-section">
+    <div class="container">
+      <div class="final-cta-inner">
+        <h2 class="final-cta-h2">Sudah kepikiran mau pesan apa?</h2>
+        <p class="final-cta-p">
+          Chat kami langsung di WhatsApp, sebutkan menu dan waktu jemput &mdash; pancong hangat dan minumanmu siap saat kamu tiba.
+        </p>
+        <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="btn-final-wa">
+          <span>&#128241;</span> Pesan Sekarang via WhatsApp &#8594;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo.png" alt="Pancong Donto Logo" class="footer-logo-img"/>
+        <div>
+          <strong>Pancong Donto</strong>
+          <small>Baseuh Dijero, Garing Diluar</small>
+        </div>
+      </div>
+      
+      <p class="footer-copy">
+        &copy; 2026 Pancong Donto &bull; Diseduh dengan hati di Cianjur &bull; 
+        <a href="https://www.instagram.com/dontopancong?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="foot-link">Instagram @dontopancong</a> &bull;
+        <a href="https://tiktok.com/@pancong.donto6" target="_blank" rel="noopener" class="foot-link">TikTok @pancong.donto6</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ======= FLOATING WHATSAPP BUTTON (FAB) ======= -->
+  <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="floating-wa-fab" aria-label="Chat WhatsApp Langsung">
+    <span class="fab-wa-icon">&#128241;</span>
+    <span class="fab-wa-text">Pesan Sekarang</span>
   </a>
-  <nav class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#paket">Paket</a>
-    <a href="#about">About</a>
-    <a href="#contact">Kontak</a>
-  </nav>
-  <a href="#contact" class="nav-cta">ORDER NOW</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</header>
 
-<!-- Mobile Drawer -->
-<div class="drawer" id="drawer">
-  <button class="drawer-close" id="drawerClose">&#10005;</button>
-  <div class="drawer-logo">
-    <img src="img/logo.png" alt="Pancong Donto" class="drawer-logo-img"/>
-  </div>
-  <a href="#home"    class="drawer-link" data-close>Home</a>
-  <a href="#menu"    class="drawer-link" data-close>Menu</a>
-  <a href="#paket"   class="drawer-link" data-close>Paket</a>
-  <a href="#about"   class="drawer-link" data-close>About</a>
-  <a href="#contact" class="drawer-link" data-close>Kontak</a>
-  <a href="#contact" class="nav-cta drawer-cta" data-close>ORDER NOW</a>
-</div>
-<div class="drawer-overlay" id="drawerOverlay"></div>
-
-<!-- ======= CINEMATIC 3D INTRO EXPERIENCE (TIKTOK STYLE) ======= -->
-<section class="intro-experience" id="home">
-  <div class="intro-sticky-stage" id="introStage">
-    <!-- Studio Ambient Background Gradient & Directional Lighting -->
-    <div class="intro-bg-gradient"></div>
-    <div class="intro-light-beam"></div>
-    <div class="intro-ambient-vignette"></div>
-
-    <!-- STAGE 1: HERO VIEW & FLOATING 3D PANCONG OBJECT -->
-    <div class="intro-hero-wrapper" id="introHeroWrapper">
-      <!-- Centered Header Typography -->
-      <div class="intro-header-content" id="introHeaderContent">
-        <p class="intro-pill">SPECIALTY PANCONG &amp; COFFEE</p>
-        <h1 class="intro-h1">Baseuh Dijero, Garing Diluar</h1>
-        <div class="intro-meta-tags">
-          <span>GARING DILUAR</span>
-          <span class="meta-dot">&#9670;</span>
-          <span>LUMER DIJERO</span>
-          <span class="meta-dot">&#9670;</span>
-          <span>TOPPING MELIMPAH</span>
-        </div>
-        <div class="intro-cta-wrap">
-          <a href="#menu" class="btn-intro-capsule">JELAJAHI MENU</a>
-        </div>
-      </div>
-
-      <!-- 3D Floating Pancong Object & Toppings -->
-      <div class="pancong-3d-viewport" id="pancongViewport">
-        <div class="pancong-3d-object" id="pancongObject">
-          <!-- Pancong Cutout with Realistic Ground/Drop Shadow -->
-          <div class="pancong-visual-wrap">
-            <img src="img/pancong_topi_perfect.png" alt="Kue Pancong Lumer Donto" class="pancong-cutout-img" id="pancongMainImg"/>
-            <div class="pancong-shadow"></div>
-          </div>
-
-          <!-- Floating 3D Toppings & Coffee Beans (Symmetrical Balance) -->
-          <div class="floating-toppings" id="floatingToppings">
-            <div class="topping-item t-bean t-left-top" data-depth="0.5" data-direction="-1"></div>
-            <div class="topping-item t-chip t-left-mid" data-depth="0.7" data-direction="-1"></div>
-            <div class="topping-item t-cheese t-left-bot" data-depth="0.4" data-direction="-1"></div>
-            <div class="topping-item t-bean t-right-top" data-depth="0.6" data-direction="1"></div>
-            <div class="topping-item t-chip t-right-mid" data-depth="0.8" data-direction="1"></div>
-            <div class="topping-item t-cheese t-right-bot" data-depth="0.45" data-direction="1"></div>
-            <div class="topping-item t-crumb t-center-left" data-depth="0.65" data-direction="-1"></div>
-            <div class="topping-item t-crumb t-center-right" data-depth="0.55" data-direction="1"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STAGE 2 & 3: MACRO MOLTEN SWIRL VORTEX & REVEAL SCREEN -->
-    <div class="intro-swirl-wrapper" id="introSwirlWrapper">
-      <div class="swirl-visual-container" id="swirlVisualContainer">
-        <img src="img/hero_pancong_swirl.jpg" alt="Pancong Molten Lava Swirl" class="swirl-img" id="swirlImg"/>
-        <div class="swirl-overlay-glow"></div>
-        <div class="swirl-vignette"></div>
-      </div>
-
-      <!-- Second Headline / Reveal Content -->
-      <div class="swirl-reveal-content" id="swirlRevealContent">
-        <p class="reveal-pill">&#10022; FRESH FROM THE OVEN &#10022;</p>
-        <h2 class="reveal-h2">Sensasi Lumer Sesungguhnya</h2>
-        <p class="reveal-desc">Hangat dari panggangan dengan lelehan topping melimpah yang lumer sempurna di setiap gigitan.</p>
-        <div class="reveal-actions">
-          <a href="#paket" class="btn-reveal-gold">LIHAT PAKET</a>
-          <a href="#all-menu" class="btn-reveal-outline">SEMUA MENU</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom Scroll Indicator Cue -->
-    <div class="intro-scroll-indicator" id="introScrollCue">
-      <div class="mouse-icon">
-        <div class="mouse-wheel"></div>
-      </div>
-      <span class="scroll-cue-label">Scroll to explore</span>
-    </div>
-
-    <!-- Bottom Fade Bridge into Dark Section -->
-    <div class="intro-bottom-gradient"></div>
-  </div>
-</section>
-
-<!-- ======= BEST SELLERS ======= -->
-<section class="section-dark" id="menu">
-  <div class="container">
-    <div class="section-top">
-      <div>
-        <p class="stag">&#128293; TERLARIS</p>
-        <h2 class="sh2">Favorit Kamu<br>Ada di Sini</h2>
-      </div>
-      <a href="#all-menu" class="btn-outline-sm">SEMUA MENU &#8594;</a>
-    </div>
-    <div class="cards4">
-
-      <div class="mcard">
-        <div class="mcard-badge">&#129351; TOP</div>
-        <div class="mcard-img">
-          <img src="img/hero_pancong_stage1.jpg" alt="Pancong Lumer Mix Toping"/>
-        </div>
-        <div class="mcard-body">
-          <p class="mcard-cat">Pancong Lumer</p>
-          <h3>Pancong Mix Toping</h3>
-          <div class="mcard-foot">
-            <span class="mprice">Rp 6K – 7K</span>
-            <button class="btn-add" aria-label="Tambah">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mcard">
-        <div class="mcard-badge new">NEW</div>
-        <div class="mcard-img">
-          <img src="img/menu_iced_coffee.jpg" alt="Iced Coffee Latte"/>
-        </div>
-        <div class="mcard-body">
-          <p class="mcard-cat">Coffee</p>
-          <h3>Iced Coffee Latte</h3>
-          <div class="mcard-foot">
-            <span class="mprice">Rp 26K</span>
-            <button class="btn-add" aria-label="Tambah">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mcard">
-        <div class="mcard-img">
-          <img src="img/menu_pisang_goreng.jpg" alt="Pisang Goreng Crispy"/>
-        </div>
-        <div class="mcard-body">
-          <p class="mcard-cat">Food Menu</p>
-          <h3>Pisang Goreng Crispy</h3>
-          <div class="mcard-foot">
-            <span class="mprice">Rp 15K</span>
-            <button class="btn-add" aria-label="Tambah">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mcard">
-        <div class="mcard-img">
-          <img src="img/menu_french_fries.jpg" alt="French Fries"/>
-        </div>
-        <div class="mcard-body">
-          <p class="mcard-cat">Food Menu</p>
-          <h3>French Fries</h3>
-          <div class="mcard-foot">
-            <span class="mprice">Rp 15K</span>
-            <button class="btn-add" aria-label="Tambah">+</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ======= PAKET SPESIAL ======= -->
-<section class="section-black" id="paket">
-  <div class="container">
-    <div class="section-center">
-      <p class="stag gold">&#11088; PAKET SPESIAL</p>
-      <h2 class="sh2">Menu Paket<br>Pancong Lumer</h2>
-      <p class="sdesc">Hemat lebih banyak dengan pilihan paket eksklusif kami</p>
-    </div>
-
-    <div class="paket-grid">
-
-      <!-- Paket 1 -->
-      <div class="paket-card">
-        <div class="paket-img-wrap">
-          <img src="img/paket1.jpg" alt="Paket 1 Pancong & Americano" class="paket-img"/>
-          <div class="paket-price-tag">ALL IN<br><strong>45K</strong></div>
-        </div>
-        <div class="paket-body">
-          <p class="paket-label">PAKET 1</p>
-          <h3>Pancong &amp; Americano</h3>
-          <p class="paket-desc">1 Porsi Lumer Pancong (Isi 5, Topping: Mix of the above) + 1 Iced Americano</p>
-          <div class="paket-includes">
-            <span>&#10003; Lumer Pancong Mix (Isi 5)</span>
-            <span>&#10003; Iced Americano</span>
-          </div>
-          <a href="#contact" class="btn-gold full">Pesan Sekarang</a>
-        </div>
-      </div>
-
-      <!-- Paket 2 -->
-      <div class="paket-card featured">
-        <div class="featured-ribbon">TERPOPULER</div>
-        <div class="paket-img-wrap">
-          <img src="img/paket2.jpg" alt="Paket 2 Pancong Lumer" class="paket-img"/>
-          <div class="paket-price-tag gold">HANYA<br><strong>45K</strong></div>
-        </div>
-        <div class="paket-body">
-          <p class="paket-label gold">PAKET 2</p>
-          <h3>Pancong Lumer</h3>
-          <p class="paket-desc">1 Porsi Pancong Lumer (Isi 5) + Lemon Tea Segar</p>
-          <div class="paket-includes">
-            <span>&#10003; Pancong Lumer Mix (Isi 5)</span>
-            <span>&#10003; Lemon Tea</span>
-          </div>
-          <a href="#contact" class="btn-gold full">Pesan Sekarang</a>
-        </div>
-      </div>
-
-      <!-- Paket 3 -->
-      <div class="paket-card">
-        <div class="paket-img-wrap">
-          <img src="img/paket3.jpg" alt="Paket 3 Pancong Lumer" class="paket-img"/>
-          <div class="paket-price-tag">CUMA<br><strong>35K</strong></div>
-        </div>
-        <div class="paket-body">
-          <p class="paket-label">PAKET 3</p>
-          <h3>Pancong Lumer</h3>
-          <p class="paket-desc">3 Pancong Lumer Mix Toping + 1 Iced Butterscotch Coffee</p>
-          <div class="paket-includes">
-            <span>&#10003; 3 Pancong Lumer Mix</span>
-            <span>&#10003; Iced Butterscotch Coffee</span>
-          </div>
-          <a href="#contact" class="btn-gold full">Pesan Sekarang</a>
-        </div>
-      </div>
-
-      <!-- Paket 4 -->
-      <div class="paket-card">
-        <div class="paket-img-wrap">
-          <img src="img/paket4.jpg" alt="Paket 4 Mie Spicy & Dimsum" class="paket-img"/>
-          <div class="paket-price-tag">ALL IN<br><strong>50K</strong></div>
-        </div>
-        <div class="paket-body">
-          <p class="paket-label">PAKET 4</p>
-          <h3>Mie Spicy &amp; Dimsum &amp; Lychee Tea</h3>
-          <p class="paket-desc">1 Porsi Mie Spicy + 1 Porsi Dimsum Goreng + 1 Lychee Tea</p>
-          <div class="paket-includes">
-            <span>&#10003; Mie Spicy (Bok Choy, Egg)</span>
-            <span>&#10003; Dimsum Goreng (Molten Cheese)</span>
-            <span>&#10003; Lychee Tea (Fresh Lychee)</span>
-          </div>
-          <a href="#contact" class="btn-gold full">Pesan Sekarang</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ======= ALL MENU ======= -->
-<section class="section-dark full-menu-sec" id="all-menu">
-  <div class="container">
-    <div class="section-center">
-      <p class="stag">&#128203; MENU LENGKAP</p>
-      <h2 class="sh2">Semua Menu Kami</h2>
-    </div>
-
-    <div class="tab-row">
-      <button class="tab active" data-tab="pancong">&#127847; Pancong</button>
-      <button class="tab" data-tab="beverage">&#9749; Beverage</button>
-      <button class="tab" data-tab="food">&#127857; Food Menu</button>
-    </div>
-
-    <!-- PANCONG -->
-    <div class="tab-panel active" id="pancong">
-      <div class="menu-panel-grid">
-        <div class="menu-panel-img">
-          <img src="img/pancong_traditional.jpg" alt="Panggang Pancong Traditional"/>
-          <div class="mpi-caption">Panggang Pancong Arang Traditional</div>
-        </div>
-        <div class="menu-panel-list">
-          <h3 class="panel-h">Varian Pancong</h3>
-          <div class="mlist">
-            <div class="mrow"><span>Original</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Choco Crunchy</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Cheese</span><span class="mp">Rp 7K</span></div>
-            <div class="mrow"><span>Mozzarella</span><span class="mp">Rp 7K</span></div>
-            <div class="mrow"><span>Peanutbutter</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Kismis</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Blueberry</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Strawberry</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Greentea</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Durian</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Tiramisu</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Coffee</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Caramel</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Bisscoff</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Vanilla</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow"><span>Almond</span><span class="mp">Rp 6K</span></div>
-            <div class="mrow highlight"><span>Vanilla Almond</span><span class="mp">Rp 7K</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BEVERAGE -->
-    <div class="tab-panel" id="beverage">
-      <div class="menu-panel-grid">
-        <div class="menu-panel-img">
-          <img src="img/menu_iced_coffee.jpg" alt="Iced Coffee Beverage"/>
-          <div class="mpi-caption">Minuman Segar Pilihan</div>
-        </div>
-        <div class="menu-panel-list">
-          <h3 class="panel-h">Non Coffee</h3>
-          <div class="mlist">
-            <div class="mrow"><span>Non Coffee</span><span class="mp">Rp 26K</span></div>
-            <div class="mrow"><span>Sweet Heart Berry</span><span class="mp">Rp 24K</span></div>
-            <div class="mrow"><span>For F***k Shake</span><span class="mp">Rp 22K</span></div>
-            <div class="mrow"><span>Choco Blast</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow"><span>Green Tea Latte</span><span class="mp">Rp 13K</span></div>
-            <div class="mrow"><span>Lemon Tea</span><span class="mp">Rp 15K</span></div>
-            <div class="mrow"><span>Lychee Tea</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow"><span>Sweet Tea</span><span class="mp">Rp 9K</span></div>
-          </div>
-          <h3 class="panel-h" style="margin-top:1.5rem;">Coffee</h3>
-          <div class="mlist">
-            <div class="mrow"><span>Americano</span><span class="mp">Rp 22K</span></div>
-            <div class="mrow"><span>V60</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow"><span>Butterscooth Coffee</span><span class="mp">Rp 26K</span></div>
-            <div class="mrow"><span>Black Donto</span><span class="mp">Rp 26K</span></div>
-            <div class="mrow"><span>Tubruk</span><span class="mp">Rp 16K</span></div>
-            <div class="mrow"><span>Vanilla Latte</span><span class="mp">Rp 26K</span></div>
-            <div class="mrow"><span>For F***k Shake Coffee</span><span class="mp">Rp 32K</span></div>
-            <div class="mrow"><span>Whiped Coffee</span><span class="mp">Rp 28K</span></div>
-            <div class="mrow"><span>Espresso</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow highlight"><span>Bisscoff Milk</span><span class="mp">Rp 28K</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FOOD -->
-    <div class="tab-panel" id="food">
-      <div class="menu-panel-grid">
-        <div class="menu-panel-img">
-          <img src="img/menu_french_fries.jpg" alt="Food Menu Crispy Fries"/>
-          <div class="mpi-caption">Aneka Makanan Lezat</div>
-        </div>
-        <div class="menu-panel-list">
-          <h3 class="panel-h">Food Menu</h3>
-          <div class="mlist">
-            <div class="mrow"><span>Pop Corn</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow"><span>Rujak Cireng</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow"><span>French Fries</span><span class="mp">Rp 15K</span></div>
-            <div class="mrow"><span>Pisang Goreng</span><span class="mp">Rp 15K</span></div>
-            <div class="mrow"><span>Pisang Bakar</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow"><span>Roti Bakar</span><span class="mp">Rp 18K</span></div>
-            <div class="mrow"><span>Korean Omelet Buldak</span><span class="mp">Rp 32K</span></div>
-            <div class="mrow"><span>Dimsum</span><span class="mp">Rp 22K</span></div>
-            <div class="mrow"><span>Mix Platter</span><span class="mp">Rp 31K</span></div>
-            <div class="mrow"><span>Spicy Indomie Goreng</span><span class="mp">Rp 19K</span></div>
-            <div class="mrow highlight"><span>Spicy Indomie Kuah</span><span class="mp">Rp 19K</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ======= BANNER ======= -->
-<section class="banner">
-  <div class="banner-text">
-    <p class="stag gold">&#11088; “BASEUH DIJERO, GARING DILUAR”</p>
-    <h2>Tempat Nongkrong<br>Asik Kamu</h2>
-    <p>Suasana nyaman, makanan enak,<br>momen yang tak terlupakan.</p>
-    <a href="#paket" class="btn-gold">Lihat Paket Hemat</a>
-  </div>
-  <div class="banner-imgs">
-    <img src="img/pancong_traditional.jpg" alt="Pancong Traditional" class="bimg bimg1"/>
-    <img src="img/menu_hot_coffee.jpg"      alt="Hot Latte Coffee"   class="bimg bimg2"/>
-    <img src="img/menu_french_fries.jpg"   alt="French Fries"        class="bimg bimg3"/>
-  </div>
-</section>
-
-<!-- ======= INFO BAR ======= -->
-<section class="infobar">
-  <div class="ibar-item">
-    <a href="https://share.google/hVPR2yXPPjXpFyWBk" target="_blank" rel="noopener" class="ibar-link">
-      <span class="ibar-icon">&#128205;</span>
-      <div><strong>Jl. Siti Jenab No. 67</strong><small>Lokasi Kami (Maps)</small></div>
-    </a>
-  </div>
-  <div class="ibar-item">
-    <span class="ibar-icon">&#127807;</span>
-    <div><strong>Bahan Segar</strong><small>Freshly Prepared</small></div>
-  </div>
-  <div class="ibar-item">
-    <a href="https://tiktok.com/@pancong.donto6" target="_blank" rel="noopener" class="ibar-link">
-      <span class="ibar-icon"><img src="img/tiktok.png" alt="TikTok" class="social-icon-img"/></span>
-      <div><strong>@pancong.donto6</strong><small>TikTok Kami</small></div>
-    </a>
-  </div>
-  <div class="ibar-item">
-    <a href="https://www.instagram.com/dontopancong?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="ibar-link">
-      <span class="ibar-icon">&#128247;</span>
-      <div><strong>@dontopancong</strong><small>Follow Us</small></div>
-    </a>
-  </div>
-</section>
-
-<!-- ======= ABOUT ======= -->
-<section class="section-dark about-sec" id="about">
-  <div class="container about-grid">
-    <div class="about-text">
-      <p class="stag">&#127847; TENTANG KAMI</p>
-      <h2 class="sh2">Lebih dari Sekadar<br>Pancong</h2>
-      <p class="about-p">Pancong Donto hadir untuk menyajikan camilan pancong dengan berbagai pilihan rasa unik, dipadukan dengan minuman kopi dan non-kopi pilihan. Kami berkomitmen menggunakan bahan-bahan segar setiap harinya.</p>
-      <div class="about-stats">
-        <div class="astat"><strong>17+</strong><span>Varian Pancong</span></div>
-        <div class="astat"><strong>18+</strong><span>Menu Minuman</span></div>
-        <div class="astat"><strong>11+</strong><span>Menu Makanan</span></div>
-      </div>
-    </div>
-    <div class="about-features">
-      <div class="afeat"><span>&#127847;</span><div><h4>Pancong Hangat</h4><p>Dibuat segar dari bahan pilihan setiap saat</p></div></div>
-      <div class="afeat"><span>&#9749;</span><div><h4>Kopi Spesial</h4><p>Berbagai pilihan kopi dan non-kopi terbaik</p></div></div>
-      <div class="afeat"><span>&#127857;</span><div><h4>Makanan Lezat</h4><p>Aneka makanan pendamping menggugah selera</p></div></div>
-      <div class="afeat"><span>&#11088;</span><div><h4>Paket Hemat</h4><p>4 pilihan paket spesial mulai 35K saja</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ======= CONTACT ======= -->
-<section class="contact-sec" id="contact">
-  <div class="container contact-inner">
-    <p class="stag" style="color:rgba(255,255,255,.5);">&#128222; HUBUNGI KAMI</p>
-    <h2 class="sh2">Yuk, Mampir!</h2>
-    <p class="sdesc" style="color:rgba(255,255,255,.6);">Kunjungi kami atau pesan langsung via WhatsApp &amp; Media Sosial</p>
-    <div class="cgrid">
-      <div class="ccard">
-        <span>&#128241;</span>
-        <strong>WhatsApp</strong>
-        <a href="https://wa.me/6285782203468" target="_blank" rel="noopener">0857-8220-3468</a>
-      </div>
-      <div class="ccard">
-        <span><img src="img/tiktok.png" alt="TikTok" class="social-icon-img ccard-icon-img"/></span>
-        <strong>TikTok</strong>
-        <a href="https://tiktok.com/@pancong.donto6" target="_blank" rel="noopener">@pancong.donto6</a>
-      </div>
-      <div class="ccard">
-        <span>&#128205;</span>
-        <strong>Alamat</strong>
-        <a href="https://share.google/hVPR2yXPPjXpFyWBk" target="_blank" rel="noopener">Jl. Siti Jenab No. 67</a>
-      </div>
-      <div class="ccard">
-        <span>&#128247;</span>
-        <strong>Instagram</strong>
-        <a href="https://www.instagram.com/dontopancong?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">@dontopancong</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======= FOOTER ======= -->
-<footer class="footer">
-  <div class="footer-brand">
-    <img src="img/logo.png" alt="Pancong Donto Logo" class="footer-logo-img"/>
-  </div>
-  <p class="footer-copy">&copy; 2025 Pancong Donto &bull; <a href="https://share.google/hVPR2yXPPjXpFyWBk" target="_blank" rel="noopener" class="foot-link">Jl. Siti Jenab No. 67</a> &bull; <a href="https://www.instagram.com/dontopancong?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="foot-link">@dontopancong</a></p>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
