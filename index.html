@@ -15,6 +15,26 @@
 </head>
 <body>
 
+  <!-- ======= PRELOADER / ENTRANCE SPLASH ANIMATION ======= -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <!-- Animated Coffee Cup & Rising Steam -->
+      <div class="preloader-cup-wrap">
+        <div class="preloader-steam">
+          <span></span><span></span><span></span>
+        </div>
+        <img src="img/logo.png" alt="Pancong Donto" class="preloader-logo"/>
+      </div>
+      <div class="preloader-text">
+        <h2 class="preloader-title">Pancong Donto</h2>
+        <p class="preloader-sub">Diseduh &amp; Dipanggang dengan Hati</p>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ======= TOP ANNOUNCEMENT / PROMO BAR ======= -->
   <div class="top-promo-bar">
     <div class="container top-promo-inner">
@@ -83,23 +103,23 @@
   <section class="hero-section" id="home">
     <div class="container hero-grid">
       
-      <!-- Left Column: Hero Text -->
+      <!-- Left Column: Hero Text with Staggered Entrance -->
       <div class="hero-left">
-        <div class="hero-tag-pill">
+        <div class="hero-tag-pill anim-hero-item">
           <span class="tag-star">&#9733;</span> KEDAI PANCONG &amp; KOPI NUSANTARA
         </div>
         
-        <h1 class="hero-title">
+        <h1 class="hero-title anim-hero-item">
           Pancong hangat,<br>
           <span class="hero-title-accent">ritme senja</span> yang<br>
           tenang.
         </h1>
 
-        <p class="hero-desc">
+        <p class="hero-desc anim-hero-item">
           Racikan khas Pancong Donto &mdash; Pancong lumer aneka topping hangat dipadukan dengan racikan kopi istimewa <strong>Sevenov Signature Blend (Robusta &amp; Arabica Gayo)</strong>. Camilan hangat dan tegukan kopi dibuat untuk menemani momen santaimu.
         </p>
 
-        <div class="hero-buttons">
+        <div class="hero-buttons anim-hero-item">
           <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="btn-hero-primary">
             Pesan via WhatsApp &#8594;
           </a>
@@ -108,7 +128,7 @@
           </a>
         </div>
 
-        <div class="hero-stats-row">
+        <div class="hero-stats-row anim-hero-item">
           <div class="hero-stat-item">
             <div class="stat-top">
               <span class="stat-num">4.9</span>
@@ -129,7 +149,7 @@
         </div>
       </div>
 
-      <!-- Right Column: Layered Polaroid Photo Collage -->
+      <!-- Right Column: Layered Polaroid Photo Collage with Floating Animation -->
       <div class="hero-right">
         <div class="polaroid-collage">
           
@@ -208,18 +228,40 @@
           </div>
         </div>
 
-        <!-- Card 3: Butterscotch Coffee Latte -->
-        <div class="bcard">
-          <div class="bcard-badge badge-klasik">KLASIK</div>
-          <div class="bcard-img-wrap">
-            <img src="img/menu_iced_coffee.jpg" alt="Butterscotch Coffee"/>
+        <!-- Card 3: Butterscotch Coffee Latte (WITH SPECIAL ANIMATION) -->
+        <div class="bcard bcard-butterscotch" id="butterscotchCard">
+          <div class="bcard-badge badge-butterscotch">
+            <span class="badge-sparkle">&#10022;</span> FAVORIT
           </div>
+          
+          <div class="bcard-img-wrap bs-img-container">
+            <img src="img/menu_iced_coffee.jpg" alt="Butterscotch Coffee" class="bs-coffee-img"/>
+            
+            <!-- Animated Coffee Steam -->
+            <div class="coffee-steam-wrap">
+              <span class="steam-wisp s1"></span>
+              <span class="steam-wisp s2"></span>
+              <span class="steam-wisp s3"></span>
+            </div>
+
+            <!-- Golden Caramel Shimmer Light Effect -->
+            <div class="butterscotch-shimmer"></div>
+
+            <!-- Floating Caramel Aroma Tag -->
+            <div class="butterscotch-tag-float">
+              <span class="bs-tag-icon">&#127852;</span> Karamel Butterscotch
+            </div>
+          </div>
+
           <div class="bcard-body">
-            <h3 class="bcard-title">Butterscotch Coffee</h3>
-            <p class="bcard-desc">Espresso aromatic dengan foam susu lembut, sentuhan butterscotch karamel legit yang creamy dan menyegarkan.</p>
+            <div class="bs-title-row">
+              <h3 class="bcard-title bs-glow-title">Butterscotch Coffee</h3>
+              <span class="bs-aroma-badge">Karamel Legit</span>
+            </div>
+            <p class="bcard-desc">Espresso aromatic dengan foam susu lembut, sentuhan saus butterscotch karamel legit yang creamy, harum, dan menyegarkan.</p>
             <div class="bcard-foot">
-              <span class="bcard-price">Rp 26rb</span>
-              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Butterscotch%20Coffee" target="_blank" rel="noopener" class="bcard-btn" aria-label="Pesan Butterscotch Coffee">+</button>
+              <span class="bcard-price bs-price">Rp 26rb</span>
+              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Butterscotch%20Coffee%20spesial" target="_blank" rel="noopener" class="bcard-btn bs-btn" aria-label="Pesan Butterscotch Coffee">+</button>
             </div>
           </div>
         </div>
@@ -410,8 +452,8 @@
               <span class="mitem-dots"></span>
               <span class="mitem-price">28rb</span>
             </div>
-            <div class="menu-row">
-              <div class="mitem-info"><strong>Butterscotch Coffee</strong><small>Creamy butterscotch aroma</small></div>
+            <div class="menu-row highlight bs-menu-item">
+              <div class="mitem-info"><strong>Butterscotch Coffee &#10022;</strong><small>Creamy aroma karamel butterscotch</small></div>
               <span class="mitem-dots"></span>
               <span class="mitem-price">26rb</span>
             </div>
@@ -577,14 +619,15 @@
           </div>
         </div>
 
-        <!-- Paket 3 -->
-        <div class="paket-card">
+        <!-- Paket 3 (WITH BUTTERSCOTCH HIGHLIGHT) -->
+        <div class="paket-card paket-bs-card">
           <div class="paket-img-wrap">
             <img src="img/paket3.jpg" alt="Paket 3 Pancong & Butterscotch" class="paket-img"/>
-            <div class="paket-price-tag">CUMA<br><strong>35K</strong></div>
+            <div class="paket-price-tag gold">CUMA<br><strong>35K</strong></div>
+            <div class="paket-steam-badge">&#127852; Butterscotch Combo</div>
           </div>
           <div class="paket-body">
-            <p class="paket-label">PAKET 3</p>
+            <p class="paket-label gold">PAKET 3</p>
             <h3>3 Pancong &amp; Butterscotch</h3>
             <p class="paket-desc">3 Buah Pancong Lumer Topping Pilihan + 1 Iced Butterscotch Coffee legit</p>
             <div class="paket-includes">

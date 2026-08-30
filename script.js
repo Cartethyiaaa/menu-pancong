@@ -1,5 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ---- Preloader Entrance Splash Animation ----
+  const preloader = document.getElementById("preloader");
+  const dismissPreloader = () => {
+    if (preloader && !preloader.classList.contains("fade-out")) {
+      preloader.classList.add("fade-out");
+    }
+  };
+  
+  // Dismiss smoothly after 1.2 seconds or when fully loaded
+  window.addEventListener("load", () => {
+    setTimeout(dismissPreloader, 400);
+  });
+  setTimeout(dismissPreloader, 1400);
+
   // ---- Mobile Drawer ----
   const hamburger = document.getElementById("hamburger");
   const drawer    = document.getElementById("drawer");
@@ -80,5 +94,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   revealCards.forEach(c => cardObserver.observe(c));
+
+  // ---- Interactive Butterscotch Coffee Hover Sparkle Effect ----
+  const bsCard = document.getElementById("butterscotchCard");
+  if (bsCard) {
+    bsCard.addEventListener("mouseenter", () => {
+      const tag = bsCard.querySelector(".butterscotch-tag-float");
+      if (tag) {
+        tag.style.transform = "scale(1.08) translateY(-4px)";
+        tag.style.borderColor = "var(--gold)";
+      }
+    });
+    bsCard.addEventListener("mouseleave", () => {
+      const tag = bsCard.querySelector(".butterscotch-tag-float");
+      if (tag) {
+        tag.style.transform = "";
+        tag.style.borderColor = "";
+      }
+    });
+  }
 
 });
