@@ -601,10 +601,83 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="floating-wa-fab" aria-label="Chat WhatsApp">
-    <span class="fab-wa-icon">&#128241;</span>
-    <span class="fab-wa-text">Pesan Sekarang</span>
-  </a>
+  <!-- ======= CART DRAWER ======= -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Keranjang Pesanan">
+    <div class="cart-header">
+      <div class="cart-title-wrap">
+        <span class="cart-icon-main">&#128722;</span>
+        <div>
+          <h3 class="cart-heading">Keranjang Pesanan</h3>
+          <span class="cart-subheading">Pancong Donto &bull; Cianjur</span>
+        </div>
+      </div>
+      <button type="button" class="cart-close-btn" id="cartClose" aria-label="Tutup Keranjang">&#10005;</button>
+    </div>
+
+    <div class="cart-body" id="cartBody">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-form">
+        <div class="cart-input-group">
+          <label for="custName">Nama Pemesan <span class="req">*</span></label>
+          <input type="text" id="custName" placeholder="Contoh: Kak Dandi / Meja 4" class="cart-input" autocomplete="name"/>
+        </div>
+        <div class="cart-input-row">
+          <div class="cart-input-group">
+            <label for="orderType">Opsi Pemesanan</label>
+            <select id="orderType" class="cart-select">
+              <option value="Dine-in (Makan di Tempat)">Makan di Tempat</option>
+              <option value="Takeaway (Bawa Pulang)">Bawa Pulang (Takeaway)</option>
+              <option value="Delivery (Kirim ke Alamat)">Delivery (Kirim)</option>
+            </select>
+          </div>
+        </div>
+        <div class="cart-input-group">
+          <label for="orderNotes">Catatan Tambahan (Opsional)</label>
+          <input type="text" id="orderNotes" placeholder="Cth: Pancong 1/2 matang lumer, es sedikit" class="cart-input"/>
+        </div>
+      </div>
+
+      <div class="cart-summary-box">
+        <div class="cart-sum-row">
+          <span>Jumlah Item</span>
+          <span id="cartSumQty">0 pcs</span>
+        </div>
+        <div class="cart-sum-row total">
+          <span>Total Pembayaran</span>
+          <strong id="cartSumTotal">Rp 0</strong>
+        </div>
+      </div>
+
+      <button type="button" class="btn-checkout-wa" id="btnCheckoutWA">
+        <span class="wa-icon">&#128241;</span> Checkout ke WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- ======= TOAST NOTIFICATION ======= -->
+  <div class="cart-toast" id="cartToast">
+    <div class="toast-content">
+      <span class="toast-check">&#10003;</span>
+      <span class="toast-msg" id="toastMsg">Ditambahkan ke keranjang!</span>
+    </div>
+    <button type="button" class="toast-view-btn" id="toastViewBtn">Lihat &#128722;</button>
+  </div>
+
+  <!-- ======= FLOATING FAB CONTAINER ======= -->
+  <div class="floating-fab-container">
+    <button type="button" class="floating-cart-fab" id="floatingCartFab" aria-label="Buka Keranjang">
+      <span class="fab-cart-icon">&#128722;</span>
+      <span class="fab-cart-text">Keranjang</span>
+      <span class="fab-cart-badge" id="fabCartCount">0</span>
+    </button>
+    <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="floating-wa-fab" aria-label="Chat WhatsApp Langsung">
+      <span class="fab-wa-icon">&#128241;</span>
+    </a>
+  </div>
 
   <script src="script.js"></script>
 </body>
