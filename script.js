@@ -254,13 +254,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======= KERANJANG PESANAN (CART & WHATSAPP CHECKOUT) =======
   // ============================================================
 
-  const CART_STORAGE_KEY = "pancong_donto_cart_v1";
+  const CART_STORAGE_KEY = "pancong_donto_cart_v2";
   let cart = [];
 
   function loadCart() {
     try {
       const saved = localStorage.getItem(CART_STORAGE_KEY);
       if (saved) cart = JSON.parse(saved);
+      if (!Array.isArray(cart)) cart = [];
     } catch (e) {
       cart = [];
     }
@@ -273,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function formatIDR(amount) {
-    return "Rp " + amount.toLocaleString("id-ID");
+    return "Rp " + Number(amount).toLocaleString("id-ID");
   }
 
   function getCartStats() {
@@ -336,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
       floatingCartFab.classList.add("cart-bump");
     }
     clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(hideToast, 3500);
+    toastTimeout = setTimeout(hideToast, 3000);
   }
 
   function hideToast() {
@@ -348,7 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (existing) {
       existing.qty += 1;
     } else {
-      cart.push({ name, price, qty: 1 });
+      cart.push({ name, price: Number(price), qty: 1 });
     }
     saveCart();
     renderCart();
@@ -370,6 +371,14 @@ document.addEventListener("DOMContentLoaded", () => {
     cart = cart.filter(i => i.name !== name);
     saveCart();
     renderCart();
+    showToast(`${name} dihapus dari keranjang`);
+  }
+
+  function clearCart() {
+    cart = [];
+    saveCart();
+    renderCart();
+    showToast("Keranjang dikosongkan");
   }
 
   function renderCart() {
@@ -391,9 +400,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cartBody.innerHTML = `
         <div class="cart-empty-state">
           <div class="cart-empty-icon">&#128722;</div>
-          <h4 class="cart-empty-title">Keranjangmu Kosong</h4>
+          <h4 class="cart-empty-title">Keranjang Masih Kosong</h4>
           <p class="cart-empty-desc">Pilih pancong lumer hangat, kopi spesial, atau paket hemat favoritmu!</p>
-          <button class="btn-browse-menu" id="btnBrowseMenu">Lihat Menu &#8594;</button>
+          <button type="button" class="btn-browse-menu" id="btnBrowseMenu">Jelajahi Menu &#8594;</button>
         </div>
       `;
       document.getElementById("btnBrowseMenu")?.addEventListener("click", () => {
@@ -403,9 +412,16 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    let itemsHtml = "";
+    let itemsHtml = `
+      <div class="cart-action-bar">
+        <span>Pesanan Kamu (${totalQty} item)</span>
+        <button type="button" class="btn-clear-cart" data-action="clear-all">Kosongkan &#128465;</button>
+      </div>
+    `;
+
     cart.forEach(item => {
       const subtotal = item.price * item.qty;
+      const safeName = encodeURIComponent(item.name);
       itemsHtml += `
         <div class="cart-item">
           <div class="cart-item-header">
@@ -413,13 +429,13 @@ document.addEventListener("DOMContentLoaded", () => {
               <h4 class="cart-item-title">${item.name}</h4>
               <span class="cart-item-price-unit">${formatIDR(item.price)} / item</span>
             </div>
-            <button class="cart-item-delete" data-del="${encodeURIComponent(item.name)}" title="Hapus item">&#128465;</button>
+            <button type="button" class="cart-item-delete" data-del="${safeName}" title="Hapus ${item.name}">&#128465;</button>
           </div>
           <div class="cart-item-bottom">
             <div class="cart-qty-ctrl">
-              <button class="cart-qty-btn" data-qty-minus="${encodeURIComponent(item.name)}">&minus;</button>
+              <button type="button" class="cart-qty-btn" data-qty-minus="${safeName}" aria-label="Kurangi jumlah">&minus;</button>
               <span class="cart-qty-num">${item.qty}</span>
-              <button class="cart-qty-btn" data-qty-plus="${encodeURIComponent(item.name)}">+</button>
+              <button type="button" class="cart-qty-btn" data-qty-plus="${safeName}" aria-label="Tambah jumlah">+</button>
             </div>
             <span class="cart-item-subtotal">${formatIDR(subtotal)}</span>
           </div>
@@ -428,44 +444,70 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     cartBody.innerHTML = itemsHtml;
-
-    // Attach Event Listeners to rendered items
-    cartBody.querySelectorAll("[data-qty-plus]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const name = decodeURIComponent(btn.getAttribute("data-qty-plus"));
-        updateQty(name, 1);
-      });
-    });
-
-    cartBody.querySelectorAll("[data-qty-minus]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const name = decodeURIComponent(btn.getAttribute("data-qty-minus"));
-        updateQty(name, -1);
-      });
-    });
-
-    cartBody.querySelectorAll("[data-del]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const name = decodeURIComponent(btn.getAttribute("data-del"));
-        removeFromCart(name);
-      });
-    });
   }
 
-  // Bind all Add-to-Cart Buttons across the whole page
-  document.querySelectorAll(".btn-add-item").forEach(btn => {
-    btn.addEventListener("click", (e) => {
+  // ---- ROBUST EVENT DELEGATION FOR CART ACTIONS (TOUCH & CLICK) ----
+  if (cartBody) {
+    const handleCartAction = (e) => {
+      // 1. Plus button
+      const plusBtn = e.target.closest("[data-qty-plus]");
+      if (plusBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const name = decodeURIComponent(plusBtn.getAttribute("data-qty-plus"));
+        updateQty(name, 1);
+        return;
+      }
+
+      // 2. Minus button
+      const minusBtn = e.target.closest("[data-qty-minus]");
+      if (minusBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const name = decodeURIComponent(minusBtn.getAttribute("data-qty-minus"));
+        updateQty(name, -1);
+        return;
+      }
+
+      // 3. Delete button
+      const delBtn = e.target.closest("[data-del]");
+      if (delBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const name = decodeURIComponent(delBtn.getAttribute("data-del"));
+        removeFromCart(name);
+        return;
+      }
+
+      // 4. Clear all button
+      const clearBtn = e.target.closest("[data-action='clear-all']");
+      if (clearBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        clearCart();
+        return;
+      }
+    };
+
+    cartBody.addEventListener("click", handleCartAction);
+  }
+
+  // Bind all Add-to-Cart Buttons across the whole page (Delegated)
+  document.addEventListener("click", (e) => {
+    const addBtn = e.target.closest(".btn-add-item");
+    if (addBtn) {
       e.preventDefault();
-      const name = btn.getAttribute("data-name");
-      const price = parseInt(btn.getAttribute("data-price"), 10) || 0;
+      const name = addBtn.getAttribute("data-name");
+      const price = parseInt(addBtn.getAttribute("data-price"), 10) || 0;
       if (name && price > 0) {
         addToCart(name, price);
       }
-    });
+    }
   });
 
   // ---- CHECKOUT TO WHATSAPP ----
-  btnCheckoutWA?.addEventListener("click", () => {
+  btnCheckoutWA?.addEventListener("click", (e) => {
+    e.preventDefault();
     if (cart.length === 0) return;
 
     const name = custNameInput?.value.trim() || "Pelanggan";
@@ -476,37 +518,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let itemsList = "";
     cart.forEach(item => {
       const subtotal = item.price * item.qty;
-      itemsList += `• ${item.qty}x ${item.name} (${formatIDR(subtotal)})
-`;
+      itemsList += `• ${item.qty}x ${item.name} (${formatIDR(subtotal)})\n`;
     });
 
-    let message = `Halo Pancong Donto! 👋
-Saya mau pesan:
-
-`;
-    message += `📋 DETAIL PESANAN (${totalQty} item):
-`;
-    message += `${itemsList}
-`;
-    message += `💰 TOTAL: ${formatIDR(totalPrice)}
-
-`;
-    message += `👤 Nama: ${name}
-`;
-    message += `🛵 Opsi: ${type}
-`;
+    let message = `Halo Pancong Donto! 👋\nSaya mau pesan:\n\n`;
+    message += `📋 DETAIL PESANAN (${totalQty} item):\n`;
+    message += `${itemsList}\n`;
+    message += `💰 TOTAL: ${formatIDR(totalPrice)}\n\n`;
+    message += `👤 Nama: ${name}\n`;
+    message += `🛵 Opsi: ${type}\n`;
     if (notes) {
-      message += `📝 Catatan: ${notes}
-`;
+      message += `📝 Catatan: ${notes}\n`;
     }
-    message += `
-Mohon dikonfirmasi ya min, terima kasih! 🙏`;
+    message += `\nMohon diproses ya min, terima kasih! 🙏`;
 
     const waUrl = `https://wa.me/6285782203468?text=${encodeURIComponent(message)}`;
     window.open(waUrl, "_blank");
   });
 
-  // Initial Load
+  // Initial Load & Render
   loadCart();
   renderCart();
 
