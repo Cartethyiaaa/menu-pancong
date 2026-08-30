@@ -2064,6 +2064,7 @@ button {
 }
 
 
+
 /* ======= PROMO STRIP ======= */
 .promo-strip {
   background: linear-gradient(90deg, #1a0e07 0%, #2a1709 50%, #1a0e07 100%);
@@ -2099,10 +2100,16 @@ button {
   color: var(--text-dim);
   font-weight: 400;
 }
-
-/* Taller card images for more appetizing look */
 .bcard-img-wrap { height: 225px; }
 .bcard-img-wrap img { height: 100%; }
+
+/* ======= 3-COLUMN BEST SELLER GRID ======= */
+.bestseller-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+@media (max-width: 900px) {
+  .bestseller-grid-3 { grid-template-columns: 1fr !important; }
+}
 
 /* ======= TESTIMONIALS SECTION ======= */
 .testimonials-section {
@@ -2179,17 +2186,10 @@ button {
   color: #0a0603;
   flex-shrink: 0;
 }
-.testi-author strong {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--text-white);
-}
-.testi-author small {
-  font-size: 0.74rem;
-  color: var(--text-muted);
-}
+.testi-author strong { display: block; font-size: 0.9rem; color: var(--text-white); }
+.testi-author small  { font-size: 0.74rem; color: var(--text-muted); }
 
-/* ======= WHY CHOOSE US SECTION ======= */
+/* ======= WHY CHOOSE US ======= */
 .why-us-section {
   padding: 6rem 0;
   background: var(--bg-warm);
@@ -2224,9 +2224,7 @@ button {
   margin: 0 auto 1.2rem;
   transition: background 0.3s ease;
 }
-.why-card:hover .why-icon-wrap {
-  background: rgba(229,166,94,0.22);
-}
+.why-card:hover .why-icon-wrap { background: rgba(229,166,94,0.22); }
 .why-icon { font-size: 1.6rem; }
 .why-title {
   font-family: var(--ff-serif);
@@ -2256,18 +2254,141 @@ button {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 }
-.menu-cta-note {
-  font-size: 0.92rem;
-  color: var(--text-muted);
+.menu-cta-note { font-size: 0.92rem; color: var(--text-muted); }
+
+/* ======= STAGE 2: TERRA GOLDEN WARM REVEAL ======= */
+
+/* Override swirl background to warm golden amber */
+.intro-swirl-wrapper {
+  background: radial-gradient(ellipse 110% 100% at 50% 60%,
+    #d49540 0%, #b0701e 35%, #7a4010 65%, #3a1a06 100%) !important;
 }
 
-/* ======= LOCATION SECOND IMAGE ======= */
-.loc-visual-card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+/* Remove mix-blend-mode – use normal object-fit contain */
+.swirl-img {
+  object-fit: contain !important;
+  border-radius: 0 !important;
 }
-.loc-img-wrapper { height: 230px; }
+
+/* Floating coffee beans */
+.swirl-beans-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+.swirl-bean {
+  position: absolute;
+  width: 28px; height: 20px;
+  background: radial-gradient(ellipse at 38% 38%, #6b3c12, #2e1406);
+  border-radius: 50% 50% 50% 50% / 42% 42% 58% 58%;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.45), 0 2px 7px rgba(0,0,0,0.3);
+  will-change: transform, opacity;
+}
+.swirl-bean::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%) rotate(-30deg);
+  width: 55%; height: 2px;
+  background: rgba(200,130,60,0.45);
+  border-radius: 2px;
+}
+.swirl-bean.sb1 { left: 8%;  top: 22%; }
+.swirl-bean.sb2 { right: 9%; top: 14%; }
+.swirl-bean.sb3 { left: 13%; bottom: 22%; }
+.swirl-bean.sb4 { right: 7%; bottom: 28%; }
+.swirl-bean.sb5 { left: 42%; top: 7%; }
+.swirl-bean.sb6 { right: 20%; top: 42%; }
+
+/* Warm light ray overlay */
+.swirl-light-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 65% at 22% 8%, rgba(255,220,150,0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 78% 12%, rgba(255,210,130,0.10) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.intro-swirl-wrapper.active-swirl .swirl-light-rays { opacity: 1; }
+
+/* Reveal text: dark on golden BG (Terra style) */
+.reveal-pill-terra { color: rgba(40, 20, 5, 0.6) !important; letter-spacing: 0.22em; font-size: 0.7rem; }
+.reveal-h2-terra {
+  font-size: clamp(2.8rem, 6vw, 5.2rem) !important;
+  color: #1c0e04 !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.12) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+.reveal-desc-terra { color: rgba(30, 15, 3, 0.7) !important; }
+.btn-reveal-dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  background: #1c0e04;
+  color: #f7c88b;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+}
+.btn-reveal-dark:hover {
+  background: #2e1808;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+.btn-reveal-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: #1c0e04;
+  border: 2px solid rgba(28,14,4,0.35);
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.btn-reveal-outline-dark:hover {
+  border-color: #1c0e04;
+  background: rgba(28,14,4,0.08);
+}
+/* override existing reveal colors for stage 2 warm mode */
+.swirl-reveal-content .reveal-pill { color: rgba(40,20,5,0.6) !important; }
+.swirl-reveal-content .reveal-h2 {
+  color: #1c0e04 !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.12) !important;
+}
+.swirl-reveal-content .reveal-desc { color: rgba(30,15,3,0.7) !important; }
+.swirl-reveal-content .btn-reveal-gold {
+  background: #1c0e04 !important;
+  color: #f7c88b !important;
+  border-color: #1c0e04 !important;
+}
+.swirl-reveal-content .btn-reveal-outline {
+  color: #1c0e04 !important;
+  border-color: rgba(28,14,4,0.35) !important;
+}
+.swirl-reveal-content .btn-reveal-outline:hover {
+  background: rgba(28,14,4,0.1) !important;
+  border-color: #1c0e04 !important;
+}
+
+/* Override vignette for warm stage */
+.intro-swirl-wrapper .swirl-vignette {
+  background: radial-gradient(ellipse 82% 80% at 50% 50%, transparent 38%, rgba(50,20,5,0.55) 100%) !important;
+}
 
 /* ======= FINAL CTA ENHANCEMENTS ======= */
 .final-cta-badge {
@@ -2304,37 +2425,22 @@ button {
   transition: all 0.25s ease;
   text-decoration: none;
 }
-.btn-final-outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(229,166,94,0.1);
-}
+.btn-final-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(229,166,94,0.1); }
 .final-cta-social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  font-size: 0.82rem;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.8rem; flex-wrap: wrap; font-size: 0.82rem;
 }
-.cta-social-link {
-  color: var(--text-muted);
-  transition: color 0.2s ease;
-  text-decoration: none;
-}
+.cta-social-link { color: var(--text-muted); transition: color 0.2s ease; text-decoration: none; }
 .cta-social-link:hover { color: var(--gold); text-decoration: underline; }
 .cta-social-sep { color: var(--text-dim); }
 
-/* ======= REVEAL ANIMATION BASE ======= */
+/* ======= SCROLL REVEAL ======= */
 .reveal-item {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
 }
-.reveal-item.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal-item.revealed { opacity: 1; transform: translateY(0); }
 
 /* ======= RESPONSIVE: NEW SECTIONS ======= */
 @media (max-width: 1100px) {
@@ -2348,130 +2454,4 @@ button {
   .final-cta-actions { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto 1.5rem; }
   .btn-final-outline, .btn-final-wa { width: 100%; justify-content: center; }
   .promo-strip-inner { flex-wrap: wrap; font-size: 0.78rem; }
-  .loc-img-wrapper { height: 200px; }
-}
-
-
-/* ======= 3-COLUMN BEST SELLER GRID ======= */
-.bestseller-grid-3 {
-  grid-template-columns: repeat(3, 1fr) !important;
-}
-@media (max-width: 900px) {
-  .bestseller-grid-3 { grid-template-columns: 1fr !important; }
-}
-
-/* ======= STAGE 2: TERRA-STYLE WARM GOLDEN REVEAL ======= */
-
-/* Overwrite swirl background to warm amber golden */
-.intro-swirl-wrapper {
-  background: radial-gradient(ellipse 110% 100% at 50% 60%, #c98a3a 0%, #a8621a 35%, #7a4010 70%, #3a1a06 100%) !important;
-}
-
-/* Swirl image behaves more like a floating product cutout */
-.swirl-img {
-  border-radius: 0 !important;
-  object-fit: contain !important;
-  mix-blend-mode: multiply !important;
-  filter: brightness(1.05) saturate(1.1) !important;
-}
-
-/* Floating coffee beans scattered around (reuse topping style) */
-.swirl-beans-wrap {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  overflow: hidden;
-}
-.swirl-bean {
-  position: absolute;
-  width: 28px; height: 20px;
-  background: radial-gradient(ellipse at 40% 40%, #5c3010, #2a1406);
-  border-radius: 50% / 40%;
-  opacity: 0;
-  box-shadow: inset 0 0 4px rgba(0,0,0,0.5), 1px 2px 6px rgba(0,0,0,0.4);
-}
-.swirl-bean::after {
-  content: "";
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%,-50%) rotate(-30deg);
-  width: 60%; height: 2px;
-  background: rgba(200,120,50,0.5);
-  border-radius: 2px;
-}
-/* Positions */
-.swirl-bean.sb1 { left: 8%; top: 20%; width:36px; height:26px; }
-.swirl-bean.sb2 { right: 10%; top: 15%; width:24px; height:18px; }
-.swirl-bean.sb3 { left: 15%; bottom: 25%; width:30px; height:22px; }
-.swirl-bean.sb4 { right: 8%; bottom: 30%; width:40px; height:28px; }
-.swirl-bean.sb5 { left: 40%; top: 8%; width:20px; height:15px; }
-.swirl-bean.sb6 { right: 22%; top: 40%; width:26px; height:19px; }
-
-/* Warm light ray streaks (like Terra) */
-.swirl-light-rays {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    conic-gradient(from 220deg at 30% 10%, transparent 0deg, rgba(255,210,140,0.08) 8deg, transparent 16deg),
-    conic-gradient(from 140deg at 70% 5%, transparent 0deg, rgba(255,200,120,0.07) 10deg, transparent 20deg),
-    conic-gradient(from 50deg at 15% 60%, transparent 0deg, rgba(255,220,160,0.06) 12deg, transparent 24deg);
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-.intro-swirl-wrapper.active-swirl .swirl-light-rays { opacity: 1; }
-
-/* Reveal headline: blur-in like Terra "Made to move" */
-.reveal-h2 {
-  font-size: clamp(2.8rem, 6vw, 5.5rem) !important;
-  font-weight: 800 !important;
-  color: #1a0d05 !important;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.15) !important;
-  line-height: 1.1 !important;
-  letter-spacing: -0.02em !important;
-}
-.reveal-pill {
-  color: rgba(60,30,10,0.65) !important;
-  font-size: 0.72rem !important;
-  letter-spacing: 0.22em !important;
-}
-.reveal-desc {
-  color: rgba(40,20,5,0.75) !important;
-  font-size: 1rem !important;
-}
-.btn-reveal-gold {
-  background: #1a0d05 !important;
-  color: #f7c88b !important;
-  border: none !important;
-}
-.btn-reveal-gold:hover {
-  background: #2e1808 !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-}
-.btn-reveal-outline {
-  border-color: rgba(30,15,5,0.35) !important;
-  color: #1a0d05 !important;
-}
-.btn-reveal-outline:hover {
-  border-color: #1a0d05 !important;
-  background: rgba(26,13,5,0.08) !important;
-}
-
-/* Swirl vignette: warm edges */
-.swirl-vignette {
-  background: radial-gradient(ellipse 85% 85% at 50% 50%, transparent 40%, rgba(60,25,5,0.55) 100%) !important;
-}
-.swirl-overlay-glow {
-  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,190,80,0.15) 0%, transparent 70%) !important;
-}
-
-/* Terra-style content layout: product bottom, text middle-top */
-.swirl-reveal-content {
-  padding: 0 4rem !important;
-}
-@media (max-width: 768px) {
-  .swirl-reveal-content { padding: 0 1.5rem !important; }
-  .reveal-h2 { font-size: 2.4rem !important; }
 }
