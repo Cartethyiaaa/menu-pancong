@@ -3,45 +3,30 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pancong Donto – Pancong Hangat, Ritme Senja yang Tenang</title>
+  <title>Pancong Donto – Baseuh Dijero, Garing Diluar</title>
   <meta name="description" content="Pancong Donto menyajikan aneka pancong lumer hangat dan racikan kopi istimewa Sevenov Signature Blend Robusta & Arabica Gayo di Cianjur."/>
   
-  <!-- Google Fonts: Playfair Display (Serif), Plus Jakarta Sans (Sans), Caveat (Handwritten Script) -->
+  <!-- Google Fonts: Playfair Display (Serif), Plus Jakarta Sans (Sans), Caveat (Script) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- ======= PRELOADER / ENTRANCE SPLASH ANIMATION ======= -->
+  <!-- ======= PRELOADER / SPLASH ANIMATION ======= -->
   <div class="preloader" id="preloader">
     <div class="preloader-content">
-      <!-- Animated Coffee Cup & Rising Steam -->
       <div class="preloader-cup-wrap">
         <div class="preloader-steam">
           <span></span><span></span><span></span>
         </div>
-        <img src="img/logo.png" alt="Pancong Donto" class="preloader-logo"/>
+        <img src="img/logo.png" alt="Pancong Donto Logo" class="preloader-logo"/>
       </div>
-      <div class="preloader-text">
-        <h2 class="preloader-title">Pancong Donto</h2>
-        <p class="preloader-sub">Diseduh &amp; Dipanggang dengan Hati</p>
-      </div>
-      <div class="preloader-bar">
-        <div class="preloader-progress"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= TOP ANNOUNCEMENT / PROMO BAR ======= -->
-  <div class="top-promo-bar">
-    <div class="container top-promo-inner">
-      <span class="promo-dot"></span>
-      <p class="promo-text">
-        <strong>Promo Senja:</strong> Paket Pancong Lumer + Kopi mulai Rp 35K &bull; Buka Setiap Hari 07.00 – 23.00 WIB
-      </p>
+      <h2 class="preloader-title">Pancong Donto</h2>
+      <p class="preloader-sub">Baseuh Dijero, Garing Diluar</p>
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
     </div>
   </div>
 
@@ -52,7 +37,7 @@
         <img src="img/logo.png" alt="Pancong Donto Logo" class="logo-img"/>
         <div class="logo-text">
           <span class="logo-title">Pancong Donto</span>
-          <span class="logo-sub">KEDAI KOPI &amp; PANCONG</span>
+          <span class="logo-sub">SPECIALTY PANCONG &amp; COFFEE</span>
         </div>
       </a>
 
@@ -66,7 +51,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan%20menu" target="_blank" rel="noopener" class="btn-nav-wa">
+        <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="btn-nav-wa">
           <span class="wa-icon">&#128241;</span> Pesan via WA
         </a>
         <button class="hamburger" id="hamburger" aria-label="Buka Menu">
@@ -87,7 +72,7 @@
     </div>
     <div class="drawer-links">
       <a href="#home"    class="drawer-link" data-close>Home</a>
-      <a href="#menu"    class="drawer-link" data-close>Menu Pilihan</a>
+      <a href="#menu"    class="drawer-link" data-close>Menu Favorit</a>
       <a href="#tentang" class="drawer-link" data-close>Cerita Kami</a>
       <a href="#harga"   class="drawer-link" data-close>Daftar Harga</a>
       <a href="#paket"   class="drawer-link" data-close>Paket Hemat</a>
@@ -99,88 +84,86 @@
   </div>
   <div class="drawer-overlay" id="drawerOverlay"></div>
 
-  <!-- ======= HERO SECTION ======= -->
-  <section class="hero-section" id="home">
-    <div class="container hero-grid">
-      
-      <!-- Left Column: Hero Text with Staggered Entrance -->
-      <div class="hero-left">
-        <div class="hero-tag-pill anim-hero-item">
-          <span class="tag-star">&#9733;</span> KEDAI PANCONG &amp; KOPI NUSANTARA
-        </div>
-        
-        <h1 class="hero-title anim-hero-item">
-          Pancong hangat,<br>
-          <span class="hero-title-accent">ritme senja</span> yang<br>
-          tenang.
-        </h1>
+  <!-- ======= CINEMATIC 3D INTRO EXPERIENCE (TIKTOK 3D SCROLL STYLE) ======= -->
+  <section class="intro-experience" id="home">
+    <div class="intro-sticky-stage" id="introStage">
+      <!-- Studio Ambient Background Gradient & Directional Lighting -->
+      <div class="intro-bg-gradient"></div>
+      <div class="intro-light-beam"></div>
+      <div class="intro-ambient-vignette"></div>
 
-        <p class="hero-desc anim-hero-item">
-          Racikan khas Pancong Donto &mdash; Pancong lumer aneka topping hangat dipadukan dengan racikan kopi istimewa <strong>Sevenov Signature Blend (Robusta &amp; Arabica Gayo)</strong>. Camilan hangat dan tegukan kopi dibuat untuk menemani momen santaimu.
-        </p>
-
-        <div class="hero-buttons anim-hero-item">
-          <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="btn-hero-primary">
-            Pesan via WhatsApp &#8594;
-          </a>
-          <a href="#harga" class="btn-hero-ghost">
-            Lihat Menu Lengkap
-          </a>
+      <!-- STAGE 1: HERO VIEW & FLOATING 3D PANCONG OBJECT -->
+      <div class="intro-hero-wrapper" id="introHeroWrapper">
+        <!-- Centered Header Typography -->
+        <div class="intro-header-content" id="introHeaderContent">
+          <p class="intro-pill">SPECIALTY PANCONG &amp; COFFEE</p>
+          <h1 class="intro-h1">Baseuh Dijero, Garing Diluar</h1>
+          <div class="intro-meta-tags">
+            <span>GARING DILUAR</span>
+            <span class="meta-dot">&#9670;</span>
+            <span>LUMER DIJERO</span>
+            <span class="meta-dot">&#9670;</span>
+            <span>TOPPING MELIMPAH</span>
+          </div>
+          <div class="intro-cta-wrap">
+            <a href="#menu" class="btn-intro-capsule">JELAJAHI MENU</a>
+          </div>
         </div>
 
-        <div class="hero-stats-row anim-hero-item">
-          <div class="hero-stat-item">
-            <div class="stat-top">
-              <span class="stat-num">4.9</span>
-              <span class="stat-icon-gold">&#9733;</span>
+        <!-- 3D Floating Pancong Object & Toppings -->
+        <div class="pancong-3d-viewport" id="pancongViewport">
+          <div class="pancong-3d-object" id="pancongObject">
+            <!-- Pancong Cutout with Realistic Ground/Drop Shadow -->
+            <div class="pancong-visual-wrap">
+              <img src="img/pancong_topi_perfect.png" alt="Kue Pancong Lumer Donto" class="pancong-cutout-img" id="pancongMainImg"/>
+              <div class="pancong-shadow"></div>
             </div>
-            <span class="stat-label">1.200+ ulasan pelanggan</span>
+
+            <!-- Floating 3D Toppings & Coffee Beans (Symmetrical Balance) -->
+            <div class="floating-toppings" id="floatingToppings">
+              <div class="topping-item t-bean t-left-top" data-depth="0.5" data-direction="-1"></div>
+              <div class="topping-item t-chip t-left-mid" data-depth="0.7" data-direction="-1"></div>
+              <div class="topping-item t-cheese t-left-bot" data-depth="0.4" data-direction="-1"></div>
+              <div class="topping-item t-bean t-right-top" data-depth="0.6" data-direction="1"></div>
+              <div class="topping-item t-chip t-right-mid" data-depth="0.8" data-direction="1"></div>
+              <div class="topping-item t-cheese t-right-bot" data-depth="0.45" data-direction="1"></div>
+              <div class="topping-item t-crumb t-center-left" data-depth="0.65" data-direction="-1"></div>
+              <div class="topping-item t-crumb t-center-right" data-depth="0.55" data-direction="1"></div>
+            </div>
           </div>
-          <div class="hero-stat-sep"></div>
-          <div class="hero-stat-item">
-            <span class="stat-num">17+</span>
-            <span class="stat-label">Varian Pancong Lumer</span>
-          </div>
-          <div class="hero-stat-sep"></div>
-          <div class="hero-stat-item">
-            <span class="stat-num">07.00 – 23.00</span>
-            <span class="stat-label">Buka setiap hari</span>
+        </div>
+      </div>
+
+      <!-- STAGE 2 & 3: MACRO MOLTEN SWIRL VORTEX & REVEAL SCREEN -->
+      <div class="intro-swirl-wrapper" id="introSwirlWrapper">
+        <div class="swirl-visual-container" id="swirlVisualContainer">
+          <img src="img/hero_pancong_swirl.jpg" alt="Pancong Molten Lava Swirl" class="swirl-img" id="swirlImg"/>
+          <div class="swirl-overlay-glow"></div>
+          <div class="swirl-vignette"></div>
+        </div>
+
+        <!-- Second Headline / Reveal Content -->
+        <div class="swirl-reveal-content" id="swirlRevealContent">
+          <p class="reveal-pill">&#10022; FRESH FROM THE OVEN &#10022;</p>
+          <h2 class="reveal-h2">Sensasi Lumer Sesungguhnya</h2>
+          <p class="reveal-desc">Hangat dari panggangan arang tradisional dengan lelehan topping melimpah yang lumer sempurna di setiap gigitan.</p>
+          <div class="reveal-actions">
+            <a href="#paket" class="btn-reveal-gold">LIHAT PAKET</a>
+            <a href="#harga" class="btn-reveal-outline">SEMUA MENU</a>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Layered Polaroid Photo Collage with Floating Animation -->
-      <div class="hero-right">
-        <div class="polaroid-collage">
-          
-          <!-- Primary Polaroid: Suasana Kedai -->
-          <div class="polaroid-card card-main">
-            <div class="polaroid-img-wrap">
-              <img src="img/kedai_suasana.jpg" alt="Suasana Sore di Kedai Pancong Donto"/>
-            </div>
-            <p class="polaroid-caption">suasana sore di kedai &#10024;</p>
-          </div>
-
-          <!-- Secondary Polaroid: Pancong Lumer Spesial -->
-          <div class="polaroid-card card-sub">
-            <div class="polaroid-img-wrap">
-              <img src="img/hero_pancong_stage1.jpg" alt="Pancong Lumer Choco Cheese"/>
-            </div>
-            <p class="polaroid-caption">pancong lumer spesial &#127847;</p>
-          </div>
-
-          <!-- Floating Badge Accent -->
-          <div class="hero-floating-badge">
-            <span class="hfb-icon">&#9749;</span>
-            <div>
-              <strong>Start from 5K</strong>
-              <small>Murah &amp; Gurih</small>
-            </div>
-          </div>
-
+      <!-- Bottom Scroll Indicator Cue -->
+      <div class="intro-scroll-indicator" id="introScrollCue">
+        <div class="mouse-icon">
+          <div class="mouse-wheel"></div>
         </div>
+        <span class="scroll-cue-label">Scroll to explore</span>
       </div>
 
+      <!-- Bottom Fade Bridge into Dark Section -->
+      <div class="intro-bottom-gradient"></div>
     </div>
   </section>
 
@@ -188,9 +171,9 @@
   <section class="section-dark" id="menu">
     <div class="container">
       
-      <div class="section-header">
+      <div class="section-header center">
         <span class="sec-subtitle">&#128293; FAVORIT PELANGGAN</span>
-        <h2 class="sec-title">Menu best seller minggu ini</h2>
+        <h2 class="sec-title">Menu Best Seller Minggu Ini</h2>
         <p class="sec-desc">Empat sajian yang paling sering dipesan ulang oleh pelanggan setia Pancong Donto.</p>
       </div>
 
@@ -228,7 +211,7 @@
           </div>
         </div>
 
-        <!-- Card 3: Butterscotch Coffee Latte (WITH SPECIAL ANIMATION) -->
+        <!-- Card 3: Butterscotch Coffee Latte (WITH ANIMATED STEAM & CARAMEL SHIMMER) -->
         <div class="bcard bcard-butterscotch" id="butterscotchCard">
           <div class="bcard-badge badge-butterscotch">
             <span class="badge-sparkle">&#10022;</span> FAVORIT
@@ -312,7 +295,7 @@
       <!-- Story Right: Text, Bean Origins & Stats -->
       <div class="story-right">
         <span class="sec-subtitle">&#128220; CERITA KAMI</span>
-        <h2 class="sec-title">Dari kehangatan dapur tradisional, ke cangkir &amp; mejamu.</h2>
+        <h2 class="sec-title">Dari Kehangatan Dapur Tradisional, ke Cangkir &amp; Mejamu.</h2>
         
         <p class="story-p">
           Pancong Donto berdiri dari kebiasaan sederhana: <em>ngobrol santai sore hari menunggu camilan pancong hangat yang baru diangkat dari cetakan arang</em>. Sejak awal, kami berkomitmen menyajikan pancong dengan tekstur lumer sempurna di dalam dan garing di luar.
@@ -359,7 +342,7 @@
       
       <div class="section-header center">
         <span class="sec-subtitle">&#128203; DAFTAR HARGA</span>
-        <h2 class="sec-title">Menu lengkap Pancong Donto</h2>
+        <h2 class="sec-title">Menu Lengkap Pancong Donto</h2>
         <p class="sec-desc">Semua harga sudah termasuk pajak. Tersedia opsi matang &amp; setengah matang (*lumer*) sesuai seleramu.</p>
       </div>
 
