@@ -86,22 +86,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const rect = introSection.getBoundingClientRect();
       const totalScrollable = introSection.offsetHeight - window.innerHeight;
       
-      // Calculate target progress
       if (totalScrollable > 0) {
         targetProgress = Math.max(0, Math.min(1, -rect.top / totalScrollable));
       }
 
-      // Smooth lerp (friction interpolation)
       currentProgress += (targetProgress - currentProgress) * 0.14;
       mouseX += (targetMouseX - mouseX) * 0.08;
       mouseY += (targetMouseY - mouseY) * 0.08;
 
       const p = currentProgress;
 
-      // Only perform transforms when intro is in or near viewport
       if (rect.bottom > -100 && rect.top < window.innerHeight + 100) {
         
-        // 1. Header Text (fades out 0.0 -> 0.22)
+        // 1. Header Text
         if (headerContent) {
           const headerAlpha = 1 - smoothstep(0.02, 0.22, p);
           const headerY = -p * 150;
@@ -110,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
           headerContent.style.pointerEvents = headerAlpha < 0.1 ? "none" : "auto";
         }
 
-        // 2. Pancong Zoom Plunge (scale 1.0 -> 5.5, fades out 0.32 -> 0.56)
+        // 2. Pancong Zoom Plunge
         if (pancongObject) {
           const zoomProgress = smoothstep(0.05, 0.60, p);
           const pancongScale = 1 + zoomProgress * 4.5;
@@ -137,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
 
-        // 4. Molten Swirl Vortex (fades in 0.26 -> 0.52, rotates with scroll)
+        // 4. Molten Swirl Vortex
         if (swirlWrapper && swirlImg) {
           const swirlAlpha = smoothstep(0.26, 0.52, p);
           swirlWrapper.style.opacity = swirlAlpha.toFixed(3);
@@ -153,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
 
-        // 5. Reveal Content Headline & Buttons (fades in 0.50 -> 0.75)
+        // 5. Reveal Content Headline & Buttons
         if (revealContent) {
           const revAlpha = smoothstep(0.50, 0.75, p);
           revealContent.style.opacity = revAlpha.toFixed(3);
@@ -179,7 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(renderIntroFrame);
   }
 
-  // Start Animation Engine
   requestAnimationFrame(renderIntroFrame);
 
   // ---- Navbar Dynamic Blur/Solid on Scroll ----
@@ -191,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, { passive: true });
 
-  // ---- Active Link on Scroll (IntersectionObserver) ----
+  // ---- Active Link on Scroll ----
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-links a");
 
@@ -253,5 +249,265 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ============================================================
+  // ======= KERANJANG PESANAN (CART & WHATSAPP CHECKOUT) =======
+  // ============================================================
+
+  const CART_STORAGE_KEY = "pancong_donto_cart_v1";
+  let cart = [];
+
+  function loadCart() {
+    try {
+      const saved = localStorage.getItem(CART_STORAGE_KEY);
+      if (saved) cart = JSON.parse(saved);
+    } catch (e) {
+      cart = [];
+    }
+  }
+
+  function saveCart() {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    } catch (e) {}
+  }
+
+  function formatIDR(amount) {
+    return "Rp " + amount.toLocaleString("id-ID");
+  }
+
+  function getCartStats() {
+    let totalQty = 0;
+    let totalPrice = 0;
+    cart.forEach(item => {
+      totalQty += item.qty;
+      totalPrice += item.price * item.qty;
+    });
+    return { totalQty, totalPrice };
+  }
+
+  const cartDrawer     = document.getElementById("cartDrawer");
+  const cartOverlay    = document.getElementById("cartOverlay");
+  const cartCloseBtn   = document.getElementById("cartClose");
+  const btnNavCart     = document.getElementById("btnNavCart");
+  const floatingCartFab= document.getElementById("floatingCartFab");
+  const cartBody       = document.getElementById("cartBody");
+  const navCartCount   = document.getElementById("navCartCount");
+  const fabCartCount   = document.getElementById("fabCartCount");
+  const cartSumQty     = document.getElementById("cartSumQty");
+  const cartSumTotal   = document.getElementById("cartSumTotal");
+  const btnCheckoutWA  = document.getElementById("btnCheckoutWA");
+  const cartToast      = document.getElementById("cartToast");
+  const toastMsg       = document.getElementById("toastMsg");
+  const toastViewBtn   = document.getElementById("toastViewBtn");
+  const custNameInput  = document.getElementById("custName");
+  const orderTypeSelect= document.getElementById("orderType");
+  const orderNotesInput= document.getElementById("orderNotes");
+
+  function openCart() {
+    cartDrawer?.classList.add("open");
+    cartOverlay?.classList.add("show");
+    document.body.style.overflow = "hidden";
+    renderCart();
+  }
+
+  function closeCart() {
+    cartDrawer?.classList.remove("open");
+    cartOverlay?.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  btnNavCart?.addEventListener("click", openCart);
+  floatingCartFab?.addEventListener("click", openCart);
+  cartCloseBtn?.addEventListener("click", closeCart);
+  cartOverlay?.addEventListener("click", closeCart);
+  toastViewBtn?.addEventListener("click", () => {
+    hideToast();
+    openCart();
+  });
+
+  let toastTimeout = null;
+  function showToast(text) {
+    if (toastMsg) toastMsg.textContent = text;
+    cartToast?.classList.add("show");
+    if (floatingCartFab) {
+      floatingCartFab.classList.remove("cart-bump");
+      void floatingCartFab.offsetWidth;
+      floatingCartFab.classList.add("cart-bump");
+    }
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(hideToast, 3500);
+  }
+
+  function hideToast() {
+    cartToast?.classList.remove("show");
+  }
+
+  function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    saveCart();
+    renderCart();
+    showToast(`${name} ditambahkan!`);
+  }
+
+  function updateQty(name, delta) {
+    const item = cart.find(i => i.name === name);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.name !== name);
+    }
+    saveCart();
+    renderCart();
+  }
+
+  function removeFromCart(name) {
+    cart = cart.filter(i => i.name !== name);
+    saveCart();
+    renderCart();
+  }
+
+  function renderCart() {
+    const { totalQty, totalPrice } = getCartStats();
+
+    // Update Counter Badges
+    if (navCartCount) navCartCount.textContent = totalQty;
+    if (fabCartCount) fabCartCount.textContent = totalQty;
+    if (cartSumQty) cartSumQty.textContent = totalQty + " pcs";
+    if (cartSumTotal) cartSumTotal.textContent = formatIDR(totalPrice);
+
+    if (btnCheckoutWA) {
+      btnCheckoutWA.disabled = cart.length === 0;
+    }
+
+    if (!cartBody) return;
+
+    if (cart.length === 0) {
+      cartBody.innerHTML = `
+        <div class="cart-empty-state">
+          <div class="cart-empty-icon">&#128722;</div>
+          <h4 class="cart-empty-title">Keranjangmu Kosong</h4>
+          <p class="cart-empty-desc">Pilih pancong lumer hangat, kopi spesial, atau paket hemat favoritmu!</p>
+          <button class="btn-browse-menu" id="btnBrowseMenu">Lihat Menu &#8594;</button>
+        </div>
+      `;
+      document.getElementById("btnBrowseMenu")?.addEventListener("click", () => {
+        closeCart();
+        document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
+      });
+      return;
+    }
+
+    let itemsHtml = "";
+    cart.forEach(item => {
+      const subtotal = item.price * item.qty;
+      itemsHtml += `
+        <div class="cart-item">
+          <div class="cart-item-header">
+            <div>
+              <h4 class="cart-item-title">${item.name}</h4>
+              <span class="cart-item-price-unit">${formatIDR(item.price)} / item</span>
+            </div>
+            <button class="cart-item-delete" data-del="${encodeURIComponent(item.name)}" title="Hapus item">&#128465;</button>
+          </div>
+          <div class="cart-item-bottom">
+            <div class="cart-qty-ctrl">
+              <button class="cart-qty-btn" data-qty-minus="${encodeURIComponent(item.name)}">&minus;</button>
+              <span class="cart-qty-num">${item.qty}</span>
+              <button class="cart-qty-btn" data-qty-plus="${encodeURIComponent(item.name)}">+</button>
+            </div>
+            <span class="cart-item-subtotal">${formatIDR(subtotal)}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    cartBody.innerHTML = itemsHtml;
+
+    // Attach Event Listeners to rendered items
+    cartBody.querySelectorAll("[data-qty-plus]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const name = decodeURIComponent(btn.getAttribute("data-qty-plus"));
+        updateQty(name, 1);
+      });
+    });
+
+    cartBody.querySelectorAll("[data-qty-minus]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const name = decodeURIComponent(btn.getAttribute("data-qty-minus"));
+        updateQty(name, -1);
+      });
+    });
+
+    cartBody.querySelectorAll("[data-del]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const name = decodeURIComponent(btn.getAttribute("data-del"));
+        removeFromCart(name);
+      });
+    });
+  }
+
+  // Bind all Add-to-Cart Buttons across the whole page
+  document.querySelectorAll(".btn-add-item").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const name = btn.getAttribute("data-name");
+      const price = parseInt(btn.getAttribute("data-price"), 10) || 0;
+      if (name && price > 0) {
+        addToCart(name, price);
+      }
+    });
+  });
+
+  // ---- CHECKOUT TO WHATSAPP ----
+  btnCheckoutWA?.addEventListener("click", () => {
+    if (cart.length === 0) return;
+
+    const name = custNameInput?.value.trim() || "Pelanggan";
+    const type = orderTypeSelect?.value || "Dine-in (Makan di Tempat)";
+    const notes = orderNotesInput?.value.trim() || "";
+    const { totalQty, totalPrice } = getCartStats();
+
+    let itemsList = "";
+    cart.forEach(item => {
+      const subtotal = item.price * item.qty;
+      itemsList += `• ${item.qty}x ${item.name} (${formatIDR(subtotal)})
+`;
+    });
+
+    let message = `Halo Pancong Donto! 👋
+Saya mau pesan:
+
+`;
+    message += `📋 DETAIL PESANAN (${totalQty} item):
+`;
+    message += `${itemsList}
+`;
+    message += `💰 TOTAL: ${formatIDR(totalPrice)}
+
+`;
+    message += `👤 Nama: ${name}
+`;
+    message += `🛵 Opsi: ${type}
+`;
+    if (notes) {
+      message += `📝 Catatan: ${notes}
+`;
+    }
+    message += `
+Mohon dikonfirmasi ya min, terima kasih! 🙏`;
+
+    const waUrl = `https://wa.me/6285782203468?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, "_blank");
+  });
+
+  // Initial Load
+  loadCart();
+  renderCart();
 
 });

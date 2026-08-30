@@ -42,8 +42,13 @@
         <a href="#lokasi">Lokasi</a>
       </nav>
       <div class="nav-actions">
+        <button class="btn-nav-cart" id="btnNavCart" aria-label="Buka Keranjang">
+          <span class="cart-icon-nav">&#128722;</span>
+          <span class="cart-nav-text">Keranjang</span>
+          <span class="cart-badge-count" id="navCartCount">0</span>
+        </button>
         <a href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20pesan" target="_blank" rel="noopener" class="btn-nav-wa">
-          <span class="wa-icon">&#128241;</span> Pesan via WA
+          <span class="wa-icon">&#128241;</span> WA Admin
         </a>
         <button class="hamburger" id="hamburger" aria-label="Buka Menu">
           <span></span><span></span><span></span>
@@ -162,8 +167,8 @@
             <h3 class="bcard-title">Pancong Mix Topping</h3>
             <p class="bcard-desc">Pancong hangat lumer setengah matang dengan perpaduan saus cokelat dan keju parut gurih melimpah.</p>
             <div class="bcard-foot">
-              <div><span class="bcard-price">Rp 5K &ndash; 6K</span><span class="bcard-unit"> / buah</span></div>
-              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Pancong%20Mix%20Topping" target="_blank" rel="noopener" class="bcard-btn">&#128241;</a>
+              <div><span class="bcard-price">Rp 6.000</span><span class="bcard-unit"> / buah</span></div>
+              <button class="bcard-btn btn-add-item" data-name="Pancong Mix Topping" data-price="6000" aria-label="Tambah Pancong Mix">+ &#128722;</button>
             </div>
           </div>
         </div>
@@ -186,8 +191,8 @@
             </div>
             <p class="bcard-desc">Espresso aromatic dengan foam susu lembut dan sentuhan saus butterscotch karamel yang creamy, harum, dan menyegarkan.</p>
             <div class="bcard-foot">
-              <div><span class="bcard-price bs-price">Rp 26rb</span><span class="bcard-unit"> / gelas</span></div>
-              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Butterscotch%20Coffee%20spesial" target="_blank" rel="noopener" class="bcard-btn bs-btn">&#128241;</a>
+              <div><span class="bcard-price bs-price">Rp 26.000</span><span class="bcard-unit"> / gelas</span></div>
+              <button class="bcard-btn bs-btn btn-add-item" data-name="Butterscotch Coffee" data-price="26000" aria-label="Tambah Butterscotch Coffee">+ &#128722;</button>
             </div>
           </div>
         </div>
@@ -200,8 +205,8 @@
             <h3 class="bcard-title">Pisang Goreng Crispy</h3>
             <p class="bcard-desc">Pisang manis pilihan digoreng renyah keemasan, disajikan hangat dengan taburan keju atau lelehan cokelat.</p>
             <div class="bcard-foot">
-              <div><span class="bcard-price">Rp 15rb</span><span class="bcard-unit"> / porsi</span></div>
-              <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Pisang%20Goreng%20Crispy" target="_blank" rel="noopener" class="bcard-btn">&#128241;</a>
+              <div><span class="bcard-price">Rp 15.000</span><span class="bcard-unit"> / porsi</span></div>
+              <button class="bcard-btn btn-add-item" data-name="Pisang Goreng Crispy" data-price="15000" aria-label="Tambah Pisang Goreng">+ &#128722;</button>
             </div>
           </div>
         </div>
@@ -323,28 +328,28 @@
         <h2 class="sec-title">Menu Lengkap Pancong Donto</h2>
         <p class="sec-desc">Harga sudah termasuk pajak. Tersedia opsi matang &amp; setengah matang (lumer) sesuai selera.</p>
       </div>
-            <div class="menu-tables-grid">
+                  <div class="menu-tables-grid">
         <!-- Category 1: Pancong Lumer -->
         <div class="menu-cat-card reveal-item">
           <div class="menu-cat-header"><span class="cat-icon">&#127847;</span><h3>Pancong Lumer</h3></div>
           <div class="menu-cat-list">
-            <div class="menu-row"><div class="mitem-info"><strong>Original</strong><small>Gurih manis kelapa klasik</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Choco Crunchy</strong><small>Lelehan cokelat krispi</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Cheese</strong><small>Keju cheddar parut melimpah</small></div><span class="mitem-dots"></span><span class="mitem-price">6K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Mozzarella</strong><small>Keju molor gurih melted</small></div><span class="mitem-dots"></span><span class="mitem-price">6K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Peanutbutter</strong><small>Selai kacang gurih creamy</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Kismis</strong><small>Taburan kismis manis legit</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Blueberry</strong><small>Selai blueberry segar manis</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Strawberry</strong><small>Selai strawberry asam manis</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Greentea</strong><small>Matcha jepang aromatik</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Durian</strong><small>Selai durian legit harum</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Tiramisu</strong><small>Aroma kopi &amp; cream manis</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Coffee</strong><small>Sentuhan kopi aroma khas</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Caramel</strong><small>Saus karamel manis legit</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Bisscoff</strong><small>Karamel biskuit lotus renyah</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Vanilla</strong><small>Vanilla lembut aromatik</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Almond</strong><small>Irisan kacang almond gurih</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Vanilla Almond</strong><small>Vanilla lembut + irisan almond</small></div><span class="mitem-dots"></span><span class="mitem-price">6K</span></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Original</strong><small>Gurih manis kelapa klasik</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Original" data-price="5000" aria-label="Tambah Pancong Original">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Choco Crunchy</strong><small>Lelehan cokelat krispi</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Choco Crunchy" data-price="5000" aria-label="Tambah Pancong Choco Crunchy">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Cheese</strong><small>Keju cheddar parut melimpah</small></div><span class="mitem-dots"></span><span class="mitem-price">6K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Cheese" data-price="6000" aria-label="Tambah Pancong Cheese">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Mozzarella</strong><small>Keju molor gurih melted</small></div><span class="mitem-dots"></span><span class="mitem-price">6K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Mozzarella" data-price="6000" aria-label="Tambah Pancong Mozzarella">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Peanutbutter</strong><small>Selai kacang gurih creamy</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Peanutbutter" data-price="5000" aria-label="Tambah Pancong Peanutbutter">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Kismis</strong><small>Taburan kismis manis legit</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Kismis" data-price="5000" aria-label="Tambah Pancong Kismis">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Blueberry</strong><small>Selai blueberry segar manis</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Blueberry" data-price="5000" aria-label="Tambah Pancong Blueberry">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Strawberry</strong><small>Selai strawberry asam manis</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Strawberry" data-price="5000" aria-label="Tambah Pancong Strawberry">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Greentea</strong><small>Matcha jepang aromatik</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Greentea" data-price="5000" aria-label="Tambah Pancong Greentea">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Durian</strong><small>Selai durian legit harum</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Durian" data-price="5000" aria-label="Tambah Pancong Durian">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Tiramisu</strong><small>Aroma kopi &amp; cream manis</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Tiramisu" data-price="5000" aria-label="Tambah Pancong Tiramisu">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Coffee</strong><small>Sentuhan kopi aroma khas</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Coffee" data-price="5000" aria-label="Tambah Pancong Coffee">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Caramel</strong><small>Saus karamel manis legit</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Caramel" data-price="5000" aria-label="Tambah Pancong Caramel">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Bisscoff</strong><small>Karamel biskuit lotus renyah</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Bisscoff" data-price="5000" aria-label="Tambah Pancong Bisscoff">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Vanilla</strong><small>Vanilla lembut aromatik</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Vanilla" data-price="5000" aria-label="Tambah Pancong Vanilla">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Almond</strong><small>Irisan kacang almond gurih</small></div><span class="mitem-dots"></span><span class="mitem-price">5K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Almond" data-price="5000" aria-label="Tambah Pancong Almond">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Vanilla Almond</strong><small>Vanilla lembut + irisan almond</small></div><span class="mitem-dots"></span><span class="mitem-price">6K</span><button class="btn-menu-add btn-add-item" data-name="Pancong Vanilla Almond" data-price="6000" aria-label="Tambah Pancong Vanilla Almond">+</button></div>
           </div>
         </div>
 
@@ -352,16 +357,16 @@
         <div class="menu-cat-card reveal-item">
           <div class="menu-cat-header"><span class="cat-icon">&#9749;</span><h3>Coffee</h3></div>
           <div class="menu-cat-list">
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Americano</strong><small>Espresso bold segar (Hot/Ice)</small></div><span class="mitem-dots"></span><span class="mitem-price">22K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>V60</strong><small>Manual brew single origin</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row highlight bs-menu-item"><div class="mitem-info"><strong>Butterscooth Coffee &#10022;</strong><small>Creamy aroma karamel butterscotch</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Black Donto</strong><small>Kopi hitam racikan spesial kedai</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Tubruk</strong><small>Kopi hitam tubruk tradisional mantap</small></div><span class="mitem-dots"></span><span class="mitem-price">16K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Vanilla Latte</strong><small>Susu lembut &amp; vanilla alami</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>For F***k Shake Coffee</strong><small>Signature coffee milkshake spesial</small></div><span class="mitem-dots"></span><span class="mitem-price">32K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Whiped Coffee</strong><small>Kopi kocok lembut foam creamy</small></div><span class="mitem-dots"></span><span class="mitem-price">28K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Espresso</strong><small>Ekstraksi murni biji kopi pilihan</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Bisscoff Milk</strong><small>Susu segar lotus biskuit creamy</small></div><span class="mitem-dots"></span><span class="mitem-price">28K</span></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Americano</strong><small>Espresso bold segar (Hot/Ice)</small></div><span class="mitem-dots"></span><span class="mitem-price">22K</span><button class="btn-menu-add btn-add-item" data-name="Americano" data-price="22000" aria-label="Tambah Americano">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>V60</strong><small>Manual brew single origin</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="V60" data-price="18000" aria-label="Tambah V60">+</button></div>
+            <div class="menu-row highlight bs-menu-item"><div class="mitem-info"><strong>Butterscooth Coffee &#10022;</strong><small>Creamy aroma karamel butterscotch</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span><button class="btn-menu-add btn-add-item" data-name="Butterscooth Coffee" data-price="26000" aria-label="Tambah Butterscooth Coffee">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Black Donto</strong><small>Kopi hitam racikan spesial kedai</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span><button class="btn-menu-add btn-add-item" data-name="Black Donto" data-price="26000" aria-label="Tambah Black Donto">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Tubruk</strong><small>Kopi hitam tubruk tradisional mantap</small></div><span class="mitem-dots"></span><span class="mitem-price">16K</span><button class="btn-menu-add btn-add-item" data-name="Kopi Tubruk" data-price="16000" aria-label="Tambah Tubruk">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Vanilla Latte</strong><small>Susu lembut &amp; vanilla alami</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span><button class="btn-menu-add btn-add-item" data-name="Vanilla Latte" data-price="26000" aria-label="Tambah Vanilla Latte">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>For F***k Shake Coffee</strong><small>Signature coffee milkshake spesial</small></div><span class="mitem-dots"></span><span class="mitem-price">32K</span><button class="btn-menu-add btn-add-item" data-name="For F***k Shake Coffee" data-price="32000" aria-label="Tambah For F***k Shake Coffee">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Whiped Coffee</strong><small>Kopi kocok lembut foam creamy</small></div><span class="mitem-dots"></span><span class="mitem-price">28K</span><button class="btn-menu-add btn-add-item" data-name="Whiped Coffee" data-price="28000" aria-label="Tambah Whiped Coffee">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Espresso</strong><small>Ekstraksi murni biji kopi pilihan</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="Espresso" data-price="18000" aria-label="Tambah Espresso">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Bisscoff Milk</strong><small>Susu segar lotus biskuit creamy</small></div><span class="mitem-dots"></span><span class="mitem-price">28K</span><button class="btn-menu-add btn-add-item" data-name="Bisscoff Milk" data-price="28000" aria-label="Tambah Bisscoff Milk">+</button></div>
           </div>
         </div>
 
@@ -369,14 +374,14 @@
         <div class="menu-cat-card reveal-item">
           <div class="menu-cat-header"><span class="cat-icon">&#129380;</span><h3>Non Coffee</h3></div>
           <div class="menu-cat-list">
-            <div class="menu-row"><div class="mitem-info"><strong>Non Coffee Special</strong><small>Racikan minuman segar pilihan</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Sweet Heart Berry</strong><small>Perpaduan berry manis segar dingin</small></div><span class="mitem-dots"></span><span class="mitem-price">24K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>For F***k Shake</strong><small>Milkshake spesial signature</small></div><span class="mitem-dots"></span><span class="mitem-price">22K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Choco Blast</strong><small>Cokelat pekat dark chocolate</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Green Tea Latte</strong><small>Matcha segar dipadu susu gurih</small></div><span class="mitem-dots"></span><span class="mitem-price">13K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Lemon Tea</strong><small>Teh sari lemon asli dingin segar</small></div><span class="mitem-dots"></span><span class="mitem-price">15K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Lychee Tea</strong><small>Teh leci wangi dengan buah</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Sweet Tea</strong><small>Es teh manis aroma melati</small></div><span class="mitem-dots"></span><span class="mitem-price">9K</span></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Non Coffee Special</strong><small>Racikan minuman segar pilihan</small></div><span class="mitem-dots"></span><span class="mitem-price">26K</span><button class="btn-menu-add btn-add-item" data-name="Non Coffee Special" data-price="26000" aria-label="Tambah Non Coffee Special">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Sweet Heart Berry</strong><small>Perpaduan berry manis segar dingin</small></div><span class="mitem-dots"></span><span class="mitem-price">24K</span><button class="btn-menu-add btn-add-item" data-name="Sweet Heart Berry" data-price="24000" aria-label="Tambah Sweet Heart Berry">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>For F***k Shake</strong><small>Milkshake spesial signature</small></div><span class="mitem-dots"></span><span class="mitem-price">22K</span><button class="btn-menu-add btn-add-item" data-name="For F***k Shake" data-price="22000" aria-label="Tambah For F***k Shake">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Choco Blast</strong><small>Cokelat pekat dark chocolate</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="Choco Blast" data-price="18000" aria-label="Tambah Choco Blast">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Green Tea Latte</strong><small>Matcha segar dipadu susu gurih</small></div><span class="mitem-dots"></span><span class="mitem-price">13K</span><button class="btn-menu-add btn-add-item" data-name="Green Tea Latte" data-price="13000" aria-label="Tambah Green Tea Latte">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Lemon Tea</strong><small>Teh sari lemon asli dingin segar</small></div><span class="mitem-dots"></span><span class="mitem-price">15K</span><button class="btn-menu-add btn-add-item" data-name="Lemon Tea" data-price="15000" aria-label="Tambah Lemon Tea">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Lychee Tea</strong><small>Teh leci wangi dengan buah</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="Lychee Tea" data-price="18000" aria-label="Tambah Lychee Tea">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Sweet Tea</strong><small>Es teh manis aroma melati</small></div><span class="mitem-dots"></span><span class="mitem-price">9K</span><button class="btn-menu-add btn-add-item" data-name="Sweet Tea" data-price="9000" aria-label="Tambah Sweet Tea">+</button></div>
           </div>
         </div>
 
@@ -384,17 +389,17 @@
         <div class="menu-cat-card reveal-item">
           <div class="menu-cat-header"><span class="cat-icon">&#127857;</span><h3>Food Menu</h3></div>
           <div class="menu-cat-list">
-            <div class="menu-row"><div class="mitem-info"><strong>Pop Corn</strong><small>Popcorn renyah gurih manis</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Rujak Cireng</strong><small>Cireng kenyal saus rujak pedas</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>French Fries</strong><small>Kentang goreng bumbu renyah</small></div><span class="mitem-dots"></span><span class="mitem-price">15K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Pisang Goreng</strong><small>Pisang manis digoreng renyah</small></div><span class="mitem-dots"></span><span class="mitem-price">15K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Pisang Bakar</strong><small>Pisang panggang saus manis</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Roti Bakar</strong><small>Roti panggang mentega lumer</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Korean Omelet Buldak</strong><small>Telur dadar saus buldak pedas</small></div><span class="mitem-dots"></span><span class="mitem-price">32K</span></div>
-            <div class="menu-row"><div class="mitem-info"><strong>Dimsum</strong><small>Dimsum isi daging lezat</small></div><span class="mitem-dots"></span><span class="mitem-price">22K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Mix Platter</strong><small>Platter kentang, cireng, sosis</small></div><span class="mitem-dots"></span><span class="mitem-price">31K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Spicy Indomie Goreng</strong><small>Indomie pedas + sayur + telur</small></div><span class="mitem-dots"></span><span class="mitem-price">19K</span></div>
-            <div class="menu-row highlight"><div class="mitem-info"><strong>Spicy Indomie Kuah</strong><small>Indomie kuah pedas + sayur + telur</small></div><span class="mitem-dots"></span><span class="mitem-price">19K</span></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Pop Corn</strong><small>Popcorn renyah gurih manis</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="Pop Corn" data-price="18000" aria-label="Tambah Pop Corn">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Rujak Cireng</strong><small>Cireng kenyal saus rujak pedas</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="Rujak Cireng" data-price="18000" aria-label="Tambah Rujak Cireng">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>French Fries</strong><small>Kentang goreng bumbu renyah</small></div><span class="mitem-dots"></span><span class="mitem-price">15K</span><button class="btn-menu-add btn-add-item" data-name="French Fries" data-price="15000" aria-label="Tambah French Fries">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Pisang Goreng</strong><small>Pisang manis digoreng renyah</small></div><span class="mitem-dots"></span><span class="mitem-price">15K</span><button class="btn-menu-add btn-add-item" data-name="Pisang Goreng" data-price="15000" aria-label="Tambah Pisang Goreng">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Pisang Bakar</strong><small>Pisang panggang saus manis</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="Pisang Bakar" data-price="18000" aria-label="Tambah Pisang Bakar">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Roti Bakar</strong><small>Roti panggang mentega lumer</small></div><span class="mitem-dots"></span><span class="mitem-price">18K</span><button class="btn-menu-add btn-add-item" data-name="Roti Bakar" data-price="18000" aria-label="Tambah Roti Bakar">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Korean Omelet Buldak</strong><small>Telur dadar saus buldak pedas</small></div><span class="mitem-dots"></span><span class="mitem-price">32K</span><button class="btn-menu-add btn-add-item" data-name="Korean Omelet Buldak" data-price="32000" aria-label="Tambah Korean Omelet Buldak">+</button></div>
+            <div class="menu-row"><div class="mitem-info"><strong>Dimsum</strong><small>Dimsum isi daging lezat</small></div><span class="mitem-dots"></span><span class="mitem-price">22K</span><button class="btn-menu-add btn-add-item" data-name="Dimsum" data-price="22000" aria-label="Tambah Dimsum">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Mix Platter</strong><small>Platter kentang, cireng, sosis</small></div><span class="mitem-dots"></span><span class="mitem-price">31K</span><button class="btn-menu-add btn-add-item" data-name="Mix Platter" data-price="31000" aria-label="Tambah Mix Platter">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Spicy Indomie Goreng</strong><small>Indomie pedas + sayur + telur</small></div><span class="mitem-dots"></span><span class="mitem-price">19K</span><button class="btn-menu-add btn-add-item" data-name="Spicy Indomie Goreng" data-price="19000" aria-label="Tambah Spicy Indomie Goreng">+</button></div>
+            <div class="menu-row highlight"><div class="mitem-info"><strong>Spicy Indomie Kuah</strong><small>Indomie kuah pedas + sayur + telur</small></div><span class="mitem-dots"></span><span class="mitem-price">19K</span><button class="btn-menu-add btn-add-item" data-name="Spicy Indomie Kuah" data-price="19000" aria-label="Tambah Spicy Indomie Kuah">+</button></div>
           </div>
         </div>
       </div>
@@ -412,7 +417,7 @@
         <h2 class="sec-title">Pilihan Paket Hemat Pancong Lumer</h2>
         <p class="sec-desc">Kombinasi pancong lumer dan minuman favorit &mdash; lebih hemat, lebih puas!</p>
       </div>
-            <div class="paket-grid">
+                  <div class="paket-grid">
         <!-- Paket 1 Porsi Pancong V1 (NEW) -->
         <div class="paket-card reveal-item">
           <div class="paket-img-wrap">
@@ -427,7 +432,7 @@
               <span>&#10003; 1 Porsi (Isi 5 Buah Pancong)</span>
               <span>&#10003; Pilihan: Choco Crunchy, Tiramisu, Greentea, Durian, Caramel, Biscoff, Peanutbutter, dll.</span>
             </div>
-            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%201%20Porsi%20Pancong%20V1%20(25K)" target="_blank" rel="noopener" class="btn-gold full">Pesan Pancong V1 &ndash; 25K</a>
+            <button class="btn-gold full btn-add-item" data-name="1 Porsi Pancong V1" data-price="25000">+ Keranjang &bull; 25K</button>
           </div>
         </div>
 
@@ -446,7 +451,7 @@
               <span>&#10003; 1 Porsi (Isi 5 Buah Pancong)</span>
               <span>&#10003; Pilihan Premium: Cheese Keju Parut, Mozzarella Molor, Vanilla Almond</span>
             </div>
-            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%201%20Porsi%20Pancong%20V2%20(30K)" target="_blank" rel="noopener" class="btn-gold full">Pesan Pancong V2 &ndash; 30K</a>
+            <button class="btn-gold full btn-add-item" data-name="1 Porsi Pancong V2 (Premium)" data-price="30000">+ Keranjang &bull; 30K</button>
           </div>
         </div>
 
@@ -464,7 +469,7 @@
               <span>&#10003; Pancong Lumer 1 Porsi (Isi 5)</span>
               <span>&#10003; 1 Iced Americano Segar</span>
             </div>
-            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%20Pancong%20dan%20Americano%20(45K)" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket Combo 1</a>
+            <button class="btn-gold full btn-add-item" data-name="Paket 1: Pancong & Americano" data-price="45000">+ Keranjang &bull; 45K</button>
           </div>
         </div>
 
@@ -483,7 +488,7 @@
               <span>&#10003; Pancong Lumer 1 Porsi (Isi 5)</span>
               <span>&#10003; 1 Iced Lemon Tea Segar</span>
             </div>
-            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%20Pancong%20dan%20Lemon%20Tea%20(45K)" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket Combo 2</a>
+            <button class="btn-gold full btn-add-item" data-name="Paket 2: Pancong & Lemon Tea" data-price="45000">+ Keranjang &bull; 45K</button>
           </div>
         </div>
 
@@ -502,7 +507,7 @@
               <span>&#10003; 3 Buah Pancong Lumer Pilihan</span>
               <span>&#10003; 1 Iced Butterscotch Coffee</span>
             </div>
-            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%203%20Pancong%20dan%20Butterscotch%20(35K)" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket Combo 3</a>
+            <button class="btn-gold full btn-add-item" data-name="Paket 3: 3 Pancong & Butterscotch" data-price="35000">+ Keranjang &bull; 35K</button>
           </div>
         </div>
 
@@ -520,7 +525,7 @@
               <span>&#10003; Mie Spicy (Bok Choy, Telur)</span>
               <span>&#10003; Dimsum Pilihan + 1 Lychee Tea</span>
             </div>
-            <a href="https://wa.me/6285782203468?text=Halo%20saya%20mau%20pesan%20Paket%20Mie%20Spicy%20dan%20Dimsum%20(50K)" target="_blank" rel="noopener" class="btn-gold full">Pesan Paket Combo 4</a>
+            <button class="btn-gold full btn-add-item" data-name="Paket 4: Mie Spicy & Dimsum" data-price="50000">+ Keranjang &bull; 50K</button>
           </div>
         </div>
       </div>
