@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   overlay?.addEventListener("click", closeDrawer);
   drawer?.querySelectorAll("[data-close]").forEach(el => el.addEventListener("click", closeDrawer));
 
-  // ---- 3D Cinematic Intro Scroll Engine ----
+  // ---- 3D Cinematic Intro Engine ----
   const introSection     = document.getElementById("home");
   const headerContent    = document.getElementById("introHeaderContent");
   const pancongObject    = document.getElementById("pancongObject");
@@ -34,8 +34,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightBeam        = document.querySelector(".intro-light-beam");
   const navbar           = document.getElementById("navbar");
 
+  // Stage 2 beans
+  const swirlBeans = [
+    document.getElementById("sbean1"),
+    document.getElementById("sbean2"),
+    document.getElementById("sbean3"),
+    document.getElementById("sbean4"),
+    document.getElementById("sbean5"),
+    document.getElementById("sbean6"),
+  ].filter(Boolean);
+
+  // Bean initial offsets for float-in from different angles
+  const beanOffsets = [
+    { tx: -180, ty: 120, rot: -35 },
+    { tx: 160,  ty: -140, rot: 25 },
+    { tx: -120, ty: -90,  rot: 50 },
+    { tx: 200,  ty: 100,  rot: -20 },
+    { tx: -60,  ty: -160, rot: 70 },
+    { tx: 130,  ty: -60,  rot: -45 },
+  ];
+
+  // Gentle idle float animation for beans (Terra style)
+  const beanPhases = swirlBeans.map((_, i) => ({
+    floatX: (Math.random() - 0.5) * 14,
+    floatY: (Math.random() - 0.5) * 10,
+    rotSpeed: (Math.random() - 0.5) * 0.3,
+    phase: i * (Math.PI * 2 / swirlBeans.length),
+    baseRot: beanOffsets[i]?.rot || 0,
+  }));
+
   let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
   let currentProgress = 0, targetProgress = 0;
+  let animTime = 0;
 
   window.addEventListener("mousemove", (e) => {
     targetMouseX = (e.clientX / window.innerWidth) - 0.5;
@@ -53,8 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const x = Math.max(0, Math.min(1, (val - min) / (max - min)));
     return x * x * (3 - 2 * x);
   }
+  function lerp(a, b, t) { return a + (b - a) * t; }
 
   function renderIntroFrame() {
+    animTime += 0.012;
     if (introSection) {
       const rect = introSection.getBoundingClientRect();
       const totalScrollable = introSection.offsetHeight - window.innerHeight;
@@ -63,7 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
       mouseX += (targetMouseX - mouseX) * 0.08;
       mouseY += (targetMouseY - mouseY) * 0.08;
       const p = currentProgress;
+
       if (rect.bottom > -100 && rect.top < window.innerHeight + 100) {
+
+        // --- STAGE 1: Hero text & pancong (p 0 → 0.55) ---
         if (headerContent) {
           const a = 1 - smoothstep(0.02, 0.22, p);
           headerContent.style.opacity = a.toFixed(3);
@@ -90,18 +125,51 @@ document.addEventListener("DOMContentLoaded", () => {
             item.style.opacity = ta.toFixed(3);
           });
         }
+
+        // --- STAGE 2: Terra-style warm reveal (p 0.26 → 1.0) ---
         if (swirlWrapper && swirlImg) {
-          const sa = smoothstep(0.26, 0.52, p);
-          swirlWrapper.style.opacity = sa.toFixed(3);
-          swirlImg.style.transform = "scale(" + (0.70 + p * 0.38).toFixed(3) + ") rotate(" + (p * 130).toFixed(1) + "deg)";
-          swirlWrapper.classList.toggle("active-interactive", p >= 0.55);
+          const swirlAlpha = smoothstep(0.26, 0.50, p);
+          swirlWrapper.style.opacity = swirlAlpha.toFixed(3);
+
+          // Product: floats UP from bottom, scale-in — Terra style
+          const productReveal = smoothstep(0.30, 0.65, p);
+          const productFloat  = Math.sin(animTime * 0.8) * 8 * productReveal;
+          const productY = lerp(80, 0, productReveal) + productFloat;
+          const productScale = lerp(0.75, 1.0, productReveal);
+          swirlImg.style.transform = "translateY(" + productY.toFixed(1) + "px) scale(" + productScale.toFixed(3) + ")";
+          swirlImg.style.filter = "brightness(" + lerp(0.6, 1.05, productReveal).toFixed(2) + ") saturate(1.1)";
+
+          // Toggle active class for light rays
+          swirlWrapper.classList.toggle("active-swirl", p >= 0.48);
         }
+
+        // --- Floating beans (Terra style) ---
+        if (swirlBeans.length > 0) {
+          const beansReveal = smoothstep(0.35, 0.68, p);
+          swirlBeans.forEach((bean, i) => {
+            const offset = beanOffsets[i] || { tx: 0, ty: 0, rot: 0 };
+            const phase  = beanPhases[i];
+            // Float-in from offset position
+            const bx = lerp(offset.tx, mouseX * phase.floatX, beansReveal);
+            const by = lerp(offset.ty, mouseY * phase.floatY + Math.sin(animTime + phase.phase) * 7, beansReveal);
+            const brot = lerp(offset.rot, phase.baseRot + Math.sin(animTime * 0.6 + phase.phase) * 6, beansReveal);
+            const bscale = lerp(0.3, 1.0, beansReveal);
+            bean.style.transform = "translate(" + bx.toFixed(1) + "px," + by.toFixed(1) + "px) rotate(" + brot.toFixed(1) + "deg) scale(" + bscale.toFixed(3) + ")";
+            bean.style.opacity = (beansReveal * 0.85).toFixed(3);
+          });
+        }
+
+        // --- Reveal text: blur-in + float up (Terra "Made to move" style) ---
         if (revealContent) {
-          const ra = smoothstep(0.50, 0.75, p);
+          const ra = smoothstep(0.50, 0.78, p);
+          const blur = lerp(12, 0, ra);
+          const textY = lerp(36, 0, ra);
           revealContent.style.opacity = ra.toFixed(3);
-          revealContent.style.transform = "translate3d(0," + ((1 - ra) * 30).toFixed(1) + "px,0) scale(" + (0.94 + ra * 0.06).toFixed(3) + ")";
-          revealContent.style.pointerEvents = ra > 0.5 ? "auto" : "none";
+          revealContent.style.transform = "translate3d(0," + textY.toFixed(1) + "px,0)";
+          revealContent.style.filter = "blur(" + blur.toFixed(1) + "px)";
+          revealContent.style.pointerEvents = ra > 0.6 ? "auto" : "none";
         }
+
         if (scrollCue) scrollCue.style.opacity = (1 - smoothstep(0.0, 0.12, p)).toFixed(3);
         if (lightBeam) lightBeam.style.transform = "rotate(" + (-15 + mouseX * 5).toFixed(1) + "deg) translate3d(" + (mouseX * 20).toFixed(1) + "px," + (mouseY * 20).toFixed(1) + "px,0)";
       }
@@ -118,14 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---- Active Nav Link ----
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-links a");
-  new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const id = e.target.getAttribute("id");
-        navLinks.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + id));
-      }
-    });
-  }, { threshold: 0.25 }).observe && sections.forEach(s => {
+  sections.forEach(s => {
     new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -136,9 +197,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.25 }).observe(s);
   });
 
-  // ---- Unified Scroll Reveal (all .reveal-item) ----
+  // ---- Unified Scroll Reveal ----
   const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
         const siblings = Array.from(el.parentElement?.children || [el]);

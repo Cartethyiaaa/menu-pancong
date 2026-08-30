@@ -2350,3 +2350,128 @@ button {
   .promo-strip-inner { flex-wrap: wrap; font-size: 0.78rem; }
   .loc-img-wrapper { height: 200px; }
 }
+
+
+/* ======= 3-COLUMN BEST SELLER GRID ======= */
+.bestseller-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+@media (max-width: 900px) {
+  .bestseller-grid-3 { grid-template-columns: 1fr !important; }
+}
+
+/* ======= STAGE 2: TERRA-STYLE WARM GOLDEN REVEAL ======= */
+
+/* Overwrite swirl background to warm amber golden */
+.intro-swirl-wrapper {
+  background: radial-gradient(ellipse 110% 100% at 50% 60%, #c98a3a 0%, #a8621a 35%, #7a4010 70%, #3a1a06 100%) !important;
+}
+
+/* Swirl image behaves more like a floating product cutout */
+.swirl-img {
+  border-radius: 0 !important;
+  object-fit: contain !important;
+  mix-blend-mode: multiply !important;
+  filter: brightness(1.05) saturate(1.1) !important;
+}
+
+/* Floating coffee beans scattered around (reuse topping style) */
+.swirl-beans-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+.swirl-bean {
+  position: absolute;
+  width: 28px; height: 20px;
+  background: radial-gradient(ellipse at 40% 40%, #5c3010, #2a1406);
+  border-radius: 50% / 40%;
+  opacity: 0;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.5), 1px 2px 6px rgba(0,0,0,0.4);
+}
+.swirl-bean::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%) rotate(-30deg);
+  width: 60%; height: 2px;
+  background: rgba(200,120,50,0.5);
+  border-radius: 2px;
+}
+/* Positions */
+.swirl-bean.sb1 { left: 8%; top: 20%; width:36px; height:26px; }
+.swirl-bean.sb2 { right: 10%; top: 15%; width:24px; height:18px; }
+.swirl-bean.sb3 { left: 15%; bottom: 25%; width:30px; height:22px; }
+.swirl-bean.sb4 { right: 8%; bottom: 30%; width:40px; height:28px; }
+.swirl-bean.sb5 { left: 40%; top: 8%; width:20px; height:15px; }
+.swirl-bean.sb6 { right: 22%; top: 40%; width:26px; height:19px; }
+
+/* Warm light ray streaks (like Terra) */
+.swirl-light-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    conic-gradient(from 220deg at 30% 10%, transparent 0deg, rgba(255,210,140,0.08) 8deg, transparent 16deg),
+    conic-gradient(from 140deg at 70% 5%, transparent 0deg, rgba(255,200,120,0.07) 10deg, transparent 20deg),
+    conic-gradient(from 50deg at 15% 60%, transparent 0deg, rgba(255,220,160,0.06) 12deg, transparent 24deg);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.intro-swirl-wrapper.active-swirl .swirl-light-rays { opacity: 1; }
+
+/* Reveal headline: blur-in like Terra "Made to move" */
+.reveal-h2 {
+  font-size: clamp(2.8rem, 6vw, 5.5rem) !important;
+  font-weight: 800 !important;
+  color: #1a0d05 !important;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.15) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+.reveal-pill {
+  color: rgba(60,30,10,0.65) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.22em !important;
+}
+.reveal-desc {
+  color: rgba(40,20,5,0.75) !important;
+  font-size: 1rem !important;
+}
+.btn-reveal-gold {
+  background: #1a0d05 !important;
+  color: #f7c88b !important;
+  border: none !important;
+}
+.btn-reveal-gold:hover {
+  background: #2e1808 !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+.btn-reveal-outline {
+  border-color: rgba(30,15,5,0.35) !important;
+  color: #1a0d05 !important;
+}
+.btn-reveal-outline:hover {
+  border-color: #1a0d05 !important;
+  background: rgba(26,13,5,0.08) !important;
+}
+
+/* Swirl vignette: warm edges */
+.swirl-vignette {
+  background: radial-gradient(ellipse 85% 85% at 50% 50%, transparent 40%, rgba(60,25,5,0.55) 100%) !important;
+}
+.swirl-overlay-glow {
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,190,80,0.15) 0%, transparent 70%) !important;
+}
+
+/* Terra-style content layout: product bottom, text middle-top */
+.swirl-reveal-content {
+  padding: 0 4rem !important;
+}
+@media (max-width: 768px) {
+  .swirl-reveal-content { padding: 0 1.5rem !important; }
+  .reveal-h2 { font-size: 2.4rem !important; }
+}
