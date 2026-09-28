@@ -536,6 +536,64 @@ document.addEventListener("DOMContentLoaded", () => {
     window.open(waUrl, "_blank");
   });
 
+  // ---- MENU PHOTO MODAL PREVIEW ----
+  const photoModal = document.getElementById("menuPhotoModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalPrice = document.getElementById("modalPrice");
+  const modalAddBtn = document.getElementById("modalAddBtn");
+  const modalClose = document.getElementById("modalClose");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  let activeModalItem = null;
+
+  function openPhotoModal(imgSrc, title, price) {
+    if (!photoModal || !modalImg) return;
+    modalImg.src = imgSrc;
+    modalImg.alt = title;
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalPrice) modalPrice.textContent = formatIDR(price);
+    activeModalItem = { name: title, price };
+    photoModal.classList.add("active");
+    photoModal.setAttribute("aria-hidden", "false");
+  }
+
+  function closePhotoModal() {
+    if (!photoModal) return;
+    photoModal.classList.remove("active");
+    photoModal.setAttribute("aria-hidden", "true");
+    activeModalItem = null;
+  }
+
+  document.addEventListener("click", (e) => {
+    const thumbWrap = e.target.closest(".mitem-thumb-wrap");
+    if (thumbWrap) {
+      const src = thumbWrap.getAttribute("data-img");
+      const title = thumbWrap.getAttribute("data-title");
+      const price = parseInt(thumbWrap.getAttribute("data-price"), 10) || 0;
+      if (src && title) {
+        openPhotoModal(src, title, price);
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && document.activeElement?.classList.contains("mitem-thumb-wrap")) {
+      document.activeElement.click();
+    }
+    if (e.key === "Escape" && photoModal?.classList.contains("active")) {
+      closePhotoModal();
+    }
+  });
+
+  modalClose?.addEventListener("click", closePhotoModal);
+  modalBackdrop?.addEventListener("click", closePhotoModal);
+  modalAddBtn?.addEventListener("click", () => {
+    if (activeModalItem) {
+      addToCart(activeModalItem.name, activeModalItem.price);
+      closePhotoModal();
+    }
+  });
+
   // Initial Load & Render
   loadCart();
   renderCart();
