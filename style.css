@@ -60,6 +60,83 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Ambient Grain Texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.7;
+}
+
+/* Accessibility Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip to Content Link */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1.5rem;
+  background: var(--gold);
+  color: #120b07;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  z-index: 100000;
+  box-shadow: var(--shadow-lg);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1.5rem;
+}
+
+/* Modern Typography Upgrades */
+h1, h2, h3, h4, .sec-title, .intro-h1, .reveal-h2, .final-cta-h2 {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+p, .sec-desc, .story-p, .bcard-desc, .why-desc, .loc-intro, .testi-quote, .paket-desc {
+  text-wrap: pretty;
+}
+
+/* Tabular Figures for Numbers & Pricing */
+.bcard-price,
+.mitem-price,
+.paket-price-tag,
+.cart-sum-row strong,
+.cart-item-price,
+.cart-badge-count,
+.fab-cart-badge,
+.sstat-box strong {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Tactile Active Press Feedback */
+button:active,
+.btn-gold:active,
+.btn-intro-capsule:active,
+.btn-reveal-gold:active,
+.btn-reveal-outline:active,
+.btn-final-wa:active,
+.btn-final-outline:active,
+.btn-maps:active,
+.btn-nav-wa:active,
+.btn-nav-cart:active {
+  transform: scale(0.975);
 }
 
 img {
@@ -448,6 +525,7 @@ button {
   width: 100%;
   height: 100vh;
   height: 100svh;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -729,6 +807,7 @@ button {
   width: 100vw;
   height: 100vh;
   height: 100svh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1077,6 +1156,7 @@ button {
   justify-content: space-between;
   padding-top: 0.8rem;
   border-top: 1px solid rgba(229, 166, 94, 0.1);
+  margin-top: auto;
 }
 
 .bcard-price {
@@ -1691,6 +1771,7 @@ button {
 
 .btn-gold.full {
   width: 100%;
+  margin-top: auto;
 }
 
 /* ======= TEMUKAN KAMI (LOCATION & VISIT) ======= */
@@ -2177,14 +2258,15 @@ button {
   border-top: 1px solid var(--border);
 }
 .testi-avatar {
-  width: 40px; height: 40px;
-  border-radius: 50%;
+  width: 42px; height: 42px;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--gold-dark), var(--gold));
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem;
   font-weight: 700;
   color: #0a0603;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 .testi-author strong { display: block; font-size: 0.9rem; color: var(--text-white); }
 .testi-author small  { font-size: 0.74rem; color: var(--text-muted); }
