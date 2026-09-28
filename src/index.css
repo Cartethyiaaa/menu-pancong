@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 24 30% 4%;         /* #0d0905 deep espresso */
+  --foreground: 40 33% 91%;        /* #f5f0e8 off-white */
+  --primary: 37 55% 51%;           /* #c9973e warm amber/gold */
+  --primary-foreground: 24 30% 4%; /* #0d0905 */
+  --muted-foreground: 40 15% 60%;  /* muted warm grey */
+  --border: 37 40% 25%;            /* dark amber border */
+  --card: 24 28% 7%;               /* slightly lighter card bg */
+  --accent: 37 55% 51%;            /* same as primary — gold */
+
+  --color-gold: #c9973e;
+  --color-dark: #0d0905;
+  --color-cream: #f5f0e8;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0d0905;
+}
+
+body {
+  background-color: #0d0905;
+  color: #f5f0e8;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.01em;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(201, 151, 62, 0.35);
+  color: #f5f0e8;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0905;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #372a1a;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c9973e;
+}
