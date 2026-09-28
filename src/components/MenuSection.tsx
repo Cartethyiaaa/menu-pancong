@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Camera } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { GoldUnderlineHeading } from './GoldUnderlineHeading';
 import { MENU_ITEMS } from '../data/menuData';
 import { MenuItem } from '../types';
@@ -8,7 +8,7 @@ import { useCart } from '../context/CartContext';
 
 export const MenuSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<MenuItem['category']>('Pancong Lumer');
-  const { addToCart, setActivePhoto } = useCart();
+  const { addToCart } = useCart();
 
   const categories: MenuItem['category'][] = [
     'Pancong Lumer',
@@ -29,7 +29,6 @@ export const MenuSection: React.FC = () => {
           </GoldUnderlineHeading>
           <p className="mt-4 text-[#a0988e] text-sm md:text-base font-sans font-light max-w-lg">
             Harga sudah termasuk pajak. Tersedia opsi matang &amp; setengah matang (lumer) sesuai selera.
-            Menu berikon kamera memiliki foto asli hidangan.
           </p>
         </div>
 
@@ -61,7 +60,7 @@ export const MenuSection: React.FC = () => {
           })}
         </div>
 
-        {/* Menu Items Grid */}
+        {/* Menu Items Grid without photos */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}
@@ -78,41 +77,15 @@ export const MenuSection: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.45,
-                  delay: index * 0.04,
+                  delay: index * 0.035,
                   ease: [0.22, 1, 0.36, 1] as const,
                 }}
                 className={`group flex items-center justify-between p-3.5 rounded-sm transition-all duration-300 ${
-                  item.image
-                    ? 'bg-gradient-to-r from-[#c9973e]/10 via-[#180f08] to-transparent border border-[#c9973e]/30 shadow-md'
-                    : item.isHighlight
-                    ? 'bg-white/[0.02] border border-white/5 hover:border-[#c9973e]/20'
-                    : 'hover:bg-white/[0.02]'
+                  item.isHighlight
+                    ? 'bg-white/[0.025] border border-[#c9973e]/15 hover:border-[#c9973e]/35'
+                    : 'hover:bg-white/[0.02] border border-transparent'
                 }`}
               >
-                {/* Photo Thumbnail if exists */}
-                {item.image ? (
-                  <div
-                    onClick={() =>
-                      setActivePhoto({
-                        src: item.image!,
-                        title: item.name,
-                        price: item.price,
-                      })
-                    }
-                    className="w-12 h-12 rounded-sm overflow-hidden border border-[#c9973e] mr-3 flex-shrink-0 relative cursor-pointer group-hover:scale-105 transition-transform shadow-md"
-                    title="Klik untuk melihat foto menu"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Camera className="w-3.5 h-3.5 text-[#c9973e]" />
-                    </div>
-                  </div>
-                ) : null}
-
                 {/* Info */}
                 <div className="flex-1 pr-3 min-w-0">
                   <div className="flex items-center gap-2">
@@ -123,7 +96,7 @@ export const MenuSection: React.FC = () => {
                       {item.name}
                     </h4>
                     {item.badge && (
-                      <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-[#c9973e]/20 text-[#c9973e] border border-[#c9973e]/40 rounded-sm">
+                      <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-[#c9973e]/15 text-[#c9973e] border border-[#c9973e]/30 rounded-sm">
                         {item.badge}
                       </span>
                     )}
@@ -147,8 +120,8 @@ export const MenuSection: React.FC = () => {
 
                   <button
                     type="button"
-                    onClick={() => addToCart(item.name, item.price, item.image)}
-                    className="w-7 h-7 rounded-full bg-[#c9973e]/20 hover:bg-[#c9973e] text-[#c9973e] hover:text-[#0d0905] border border-[#c9973e]/50 flex items-center justify-center transition-all active:scale-90"
+                    onClick={() => addToCart(item.name, item.price)}
+                    className="w-7 h-7 rounded-full bg-[#c9973e]/15 hover:bg-[#c9973e] text-[#c9973e] hover:text-[#0d0905] border border-[#c9973e]/40 flex items-center justify-center transition-all active:scale-90"
                     aria-label={`Tambah ${item.name} ke keranjang`}
                   >
                     <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
