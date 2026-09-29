@@ -31,7 +31,7 @@ export const App: React.FC = () => {
             id="home"
             eyebrow="SPECIALTY PANCONG &bull; CIANJUR SEJAK 2018"
             title="Baseuh Dijero Garing Diluar"
-            description="Kue pancong lumer autentik dengan lelehan topping melimpah mulai 5rb dan racikan kopi spesial Sevenov Signature Blend."
+            description="Kue pancong lumer autentik dengan lelehan topping melimpah mulai 6rb dan racikan Kopi dari Signature Blend."
             colors={["#0d0905", "#e5a65e", "#ff7a29", "#c9973e", "#f5f0e8"]}
             primaryAction={{
               label: "Jelajahi Menu",

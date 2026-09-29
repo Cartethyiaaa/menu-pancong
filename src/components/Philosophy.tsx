@@ -21,7 +21,7 @@ export const Philosophy: React.FC = () => {
                 />
               </div>
               <p className="text-center text-xs italic text-[#c9973e] font-serif">
-                diseduh dengan sepenuh hati &#9749;
+                diseduh dengan sepenuh hati
               </p>
             </div>
 
@@ -29,12 +29,12 @@ export const Philosophy: React.FC = () => {
               <div className="rounded-sm overflow-hidden border border-[#c9973e]/20 shadow-xl aspect-[4/5]">
                 <img
                   src="img/sevenov_beans_real.jpg"
-                  alt="Sevenov Signature Blend Coffee Beans"
+                  alt="Signature Blend Coffee Beans"
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
                 />
               </div>
               <p className="text-center text-xs italic text-[#c9973e] font-serif">
-                biji kopi pilihan nusantara &#127793;
+                biji kopi pilihan nusantara 
               </p>
             </div>
           </div>

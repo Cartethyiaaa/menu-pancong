@@ -100,8 +100,8 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-[15px] md:text-[17px] text-[#a0988e] max-w-xl font-sans font-light leading-relaxed mb-8 tracking-[0.01em]"
           >
-            Kue pancong lumer autentik dengan lelehan topping melimpah mulai 5rb, dipanggang hangat tiap hari
-            bersama kopi spesial Sevenov Signature Blend.
+            Kue pancong lumer autentik dengan lelehan topping melimpah mulai 6rb, dipanggang hangat tiap hari
+            bersama kopi dari Signature Blend.
           </motion.p>
 
           {/* CTA Buttons Row */}
