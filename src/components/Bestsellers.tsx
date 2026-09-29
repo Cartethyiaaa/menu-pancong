@@ -37,9 +37,9 @@ export const Bestsellers: React.FC = () => {
       titleLine2: "– ES KRIM VANILLA",
       desc: "Pisang manis panggang arang harum disajikan hangat dengan scoop es krim vanilla legit",
       img: "img/menu_pisang_bakar.jpg",
-      ctaText: "+ Keranjang (18K)",
+      ctaText: "+ Keranjang (22K)",
       ctaUrl: "#",
-      priceNum: 18000,
+      priceNum: 22000,
     },
     {
       tag: "#FavoritNongkrong",
@@ -47,9 +47,9 @@ export const Bestsellers: React.FC = () => {
       titleLine2: "– DOUBLE SCOOP",
       desc: "Roti tebal panggang mentega garing dengan double scoop es krim vanilla & taburan oatmeal renyah",
       img: "img/menu_roti_bakar.jpg",
-      ctaText: "+ Keranjang (18K)",
+      ctaText: "+ Keranjang (22K)",
       ctaUrl: "#",
-      priceNum: 18000,
+      priceNum: 22000,
     },
     {
       tag: "#Terlaris",
@@ -103,16 +103,16 @@ export const Bestsellers: React.FC = () => {
     <section id="bestseller" className="w-full bg-[#0d0905] pt-20 pb-10 border-t border-[#c9973e]/15">
       <div className="max-w-6xl mx-auto px-6 mb-4 text-center flex flex-col items-center">
         <GoldUnderlineHeading subtitle="3D INTERACTIVE SHOWCASE">
-          Galeri 3D Menu &amp; Foto Favorit
+          Best Sellers Menu
         </GoldUnderlineHeading>
         <p className="mt-4 text-[#a0988e] text-sm md:text-base font-sans font-light max-w-lg">
-          Geser atau klik menu foto favoritmu di bawah. Tampilan 3D Coverflow interaktif untuk hidangan andalan Pancong Donto.
+          Geser atau klik menu di bawah.
         </p>
       </div>
 
       <CoverFlowCarousel
         items={pancongDishes}
-        sectionLabel="HIGHLIGHT FOTO MENU ASLI"
+        sectionLabel="FOTO MENU"
         autoplay={true}
         autoplayDelay={4000}
         onCtaClick={handleCtaClick}

@@ -56,19 +56,13 @@ export const Philosophy: React.FC = () => {
               Pancong Donto berdiri dari kebiasaan sederhana: <em>ngobrol santai sore hari menunggu camilan pancong hangat yang baru diangkat dari cetakan arang</em>. Sejak 2018 di Cianjur, kami berkomitmen menyajikan pancong bertekstur lumer sempurna di dalam dan garing renyah di luar.
             </p>
             <p>
-              Tak hanya camilan, kami meracik kopi dengan biji pilihan <strong>Sevenov Signature Blend</strong> &mdash; memadukan karakter mantap <strong>Robusta</strong> dan aroma floral khas <strong>Arabica Aceh Gayo</strong> agar setiap tegukan memberikan ketenangan dan kehangatan.
+              Tak hanya camilan, kami meracik kopi dengan biji pilihan <strong>Signature Blend</strong> &mdash; memadukan karakter mantap <strong>Robusta</strong> dan aroma floral khas <strong>Arabica</strong> agar setiap tegukan memberikan ketenangan dan kehangatan.
             </p>
 
             {/* Badges */}
             <div className="flex flex-wrap gap-2 pt-2">
               <span className="px-3 py-1 bg-[#c9973e]/10 border border-[#c9973e]/30 text-[#c9973e] text-xs font-sans rounded-full">
-                🌱 Arabica Gayo, Aceh
-              </span>
-              <span className="px-3 py-1 bg-[#c9973e]/10 border border-[#c9973e]/30 text-[#c9973e] text-xs font-sans rounded-full">
-                🌱 Toraja, Sulawesi
-              </span>
-              <span className="px-3 py-1 bg-[#c9973e]/10 border border-[#c9973e]/30 text-[#c9973e] text-xs font-sans rounded-full">
-                🌱 Robusta Pilihan
+                Arabica & Robusta
               </span>
             </div>
 

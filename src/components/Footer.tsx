@@ -78,9 +78,6 @@ export const Footer: React.FC = () => {
               <p>
                 <strong className="text-[#f5f0e8] font-normal">Setiap Hari:</strong> 07.00 &ndash; 23.00 WIB
               </p>
-              <p className="text-[#c9973e] pt-1 text-xs">
-                🔥 Promo Senja: Beli 5 pancong gratis 1 topping (17.00 - 19.00 WIB)
-              </p>
             </div>
           </div>
 

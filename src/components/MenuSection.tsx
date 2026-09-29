@@ -135,7 +135,7 @@ export const MenuSection: React.FC = () => {
         {/* CTA row */}
         <div className="mt-14 p-6 rounded-sm bg-[#160e08] border border-[#c9973e]/25 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs sm:text-sm text-[#a0988e] font-sans text-center sm:text-left">
-            💬 Mau tanya rekomendasi rasa atau varian setengah matang? Hubungi kami langsung!
+            Mau tanya rekomendasi rasa atau varian setengah matang? Hubungi kami langsung!
           </p>
           <a
             href="https://wa.me/6285782203468?text=Halo%20Pancong%20Donto,%20saya%20mau%20tanya%20menu"
