@@ -1,83 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Star } from 'lucide-react';
-import { REVIEWS_DATA } from '../data/reviewsData';
+import React from 'react';
+import { Star, Heart, Coffee, ThumbsUp } from 'lucide-react';
 import { GoldUnderlineHeading } from './GoldUnderlineHeading';
+import { TestimonialStack, type Testimonial } from './ui/glass-testimonial-swiper';
+
+const PANCONG_TESTIMONIALS: Testimonial[] = [
+  {
+    id: 'rev-1',
+    initials: 'RM',
+    name: 'Reza Maulana',
+    role: 'Pelanggan Setia • Cianjur',
+    quote: 'Pancong lumernya beneran lumer banget! Keju mozzarellanya molor melimpah, beneran mantap. Wajib mampir kalau lagi ke Cianjur!',
+    tags: [
+      { text: 'TERLARIS', type: 'featured' },
+      { text: 'Pancong Lumer', type: 'default' },
+    ],
+    stats: [
+      { icon: Star, text: '5.0 Bintang' },
+      { icon: Heart, text: 'Langganan 3 thn' },
+    ],
+    avatarGradient: 'linear-gradient(135deg, #c9973e, #8c5b1b)',
+  },
+  {
+    id: 'rev-2',
+    initials: 'SN',
+    name: 'Siti Nurhaliza',
+    role: 'Food Enthusiast • Cianjur',
+    quote: 'Kopinya enak banget, racikan signature Sevenov blend-nya wangi dan khas. Sekarang jadi spot nongkrong favorit bareng teman tiap sore.',
+    tags: [
+      { text: 'FAVORIT', type: 'featured' },
+      { text: 'Sevenov Blend', type: 'default' },
+    ],
+    stats: [
+      { icon: Coffee, text: 'Kopi Susu Gula Aren' },
+      { icon: ThumbsUp, text: 'Verified Review' },
+    ],
+    avatarGradient: 'linear-gradient(135deg, #d97706, #78350f)',
+  },
+  {
+    id: 'rev-3',
+    initials: 'DP',
+    name: 'Dandi Pratama',
+    role: 'Pelanggan • Bandung',
+    quote: 'Harga mulai 5-6rb tapi rasa beneran premium! Butterscotch latte-nya nagih, sekali nongkrong pesan dua gelas sekaligus.',
+    tags: [
+      { text: 'RECOMMENDED', type: 'featured' },
+      { text: 'Butterscotch', type: 'default' },
+    ],
+    stats: [
+      { icon: Star, text: '5.0 Bintang' },
+      { icon: ThumbsUp, text: 'Puas Banget' },
+    ],
+    avatarGradient: 'linear-gradient(135deg, #b45309, #451a03)',
+  },
+  {
+    id: 'rev-4',
+    initials: 'AF',
+    name: 'Aulia Fitri',
+    role: 'Pelajar & Mahasiswi • Cianjur',
+    quote: 'Tekstur pancongnya pas: luar garing renyah tapi dalamnya super lumer meleleh. Varian Choco Blast & Keju Susu juaranya!',
+    tags: [
+      { text: 'VIRAL', type: 'featured' },
+      { text: 'Choco Blast', type: 'default' },
+    ],
+    stats: [
+      { icon: Star, text: '5.0 Bintang' },
+      { icon: Heart, text: 'Topping Melimpah' },
+    ],
+    avatarGradient: 'linear-gradient(135deg, #ca8a04, #713f12)',
+  },
+];
 
 export const Testimonials: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % REVIEWS_DATA.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const current = REVIEWS_DATA[currentIndex];
-
   return (
-    <section className="py-24 px-6 md:px-16 bg-[#0d0905] border-t border-[#c9973e]/15">
-      <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+    <section id="ulasan" className="py-24 px-4 sm:px-6 md:px-16 bg-[#0d0905] border-t border-[#c9973e]/15">
+      <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
         <GoldUnderlineHeading subtitle="APA KATA MEREKA">
           Cerita Pelanggan Setia Kami
         </GoldUnderlineHeading>
-        <p className="mt-4 text-[#a0988e] text-sm md:text-base font-sans font-light">
-          Lebih dari 1000+ pelanggan sudah pernah mampir menikmati hangatnya pancong &amp; kopi Sevenov.
+        <p className="mt-4 text-[#a0988e] text-sm md:text-base font-sans font-light max-w-xl">
+          Lebih dari 1000+ pelanggan sudah mampir menikmati hangatnya pancong lumer &amp; racikan kopi Sevenov. Geser kartu ulasan di bawah:
         </p>
 
-        {/* Stars */}
-        <div className="flex items-center gap-1.5 mt-8 text-[#c9973e]">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 fill-current" />
-          ))}
-        </div>
-
-        {/* Quote Container */}
-        <div className="mt-6 min-h-[170px] sm:min-h-[140px] flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="flex flex-col items-center"
-            >
-              <blockquote
-                className="text-[20px] sm:text-[24px] md:text-[26px] italic font-serif text-[#f5f0e8] leading-relaxed max-w-2xl font-light"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-              >
-                &ldquo;{current.quote}&rdquo;
-              </blockquote>
-
-              <div className="mt-6 flex flex-col items-center">
-                <span className="text-[12px] uppercase tracking-[0.2em] text-[#c9973e] font-sans font-bold">
-                  {current.name}
-                </span>
-                <span className="text-[12px] text-[#a0988e] font-sans mt-0.5 font-light">
-                  {current.location}
-                </span>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Dot Navigation */}
-        <div className="flex items-center space-x-3 mt-8">
-          {REVIEWS_DATA.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setCurrentIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                currentIndex === i
-                  ? 'w-7 bg-[#c9973e]'
-                  : 'w-2 bg-[#c9973e]/30 hover:bg-[#c9973e]/60'
-              }`}
-              aria-label={`Lihat ulasan ${i + 1}`}
-            />
-          ))}
+        {/* 3D Glass Testimonial Swiper Stack */}
+        <div className="mt-12 w-full flex justify-center">
+          <TestimonialStack testimonials={PANCONG_TESTIMONIALS} visibleBehind={2} />
         </div>
       </div>
     </section>

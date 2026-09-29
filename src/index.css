@@ -3,18 +3,42 @@
 @tailwind utilities;
 
 :root {
+  --radius: 1rem;
   --background: 24 30% 4%;         /* #0d0905 deep espresso */
   --foreground: 40 33% 91%;        /* #f5f0e8 off-white */
   --primary: 37 55% 51%;           /* #c9973e warm amber/gold */
   --primary-foreground: 24 30% 4%; /* #0d0905 */
+  --secondary: 24 20% 12%;
+  --secondary-foreground: 40 33% 91%;
+  --muted: 24 20% 12%;
   --muted-foreground: 40 15% 60%;  /* muted warm grey */
   --border: 37 40% 25%;            /* dark amber border */
   --card: 24 28% 7%;               /* slightly lighter card bg */
+  --card-foreground: 40 33% 91%;
   --accent: 37 55% 51%;            /* same as primary — gold */
+  --accent-foreground: 24 30% 4%;
+  --ring: 37 55% 51%;
 
   --color-gold: #c9973e;
   --color-dark: #0d0905;
   --color-cream: #f5f0e8;
+}
+
+.dark {
+  --background: 24 30% 4%;
+  --foreground: 40 33% 91%;
+  --card: 24 28% 7%;
+  --card-foreground: 40 33% 91%;
+  --popover: 24 28% 7%;
+  --popover-foreground: 40 33% 91%;
+  --primary: 37 55% 51%;
+  --primary-foreground: 24 30% 4%;
+  --secondary: 24 20% 12%;
+  --secondary-foreground: 40 33% 91%;
+  --muted-foreground: 40 15% 60%;
+  --accent: 37 55% 51%;
+  --border: 37 40% 25%;
+  --ring: 37 55% 51%;
 }
 
 html {
@@ -53,5 +77,60 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  background: #c9973e;
+}
+
+/* Glass Testimonial Swiper Stack Styles */
+.testimonials-stack {
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  min-height: 320px;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .testimonials-stack {
+    min-height: 380px;
+  }
+}
+
+.testimonial-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-radius: 1.25rem;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  user-select: none;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.testimonial-card.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.glass-effect {
+  background: rgba(26, 18, 11, 0.85);
+  border: 1px solid rgba(201, 151, 62, 0.3);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 15px rgba(201, 151, 62, 0.08);
+}
+
+.pagination-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(201, 151, 62, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-dot.active {
+  width: 24px;
   background: #c9973e;
 }
